@@ -1,0 +1,68 @@
+﻿@model Shop_T.Models.CategoriesViewModel 
+@{
+    ViewData["Title"] = "Categories";
+  
+}
+<!-- Page Content -->
+<!-- section: works -->
+<section id="works" class="section">
+    <div class="container clearfix">
+        <h4>Our Categories</h4>
+        <!-- portfolio filter -->
+        <div class="row">
+            <div id="filters" class="span12">
+                <ul class="clearfix">
+                    <li>
+                        <a href="#" data-filter="*" class="active">
+                            <h5>All</h5>
+                        </a>
+                    </li>
+              
+                    <li>
+                        <a href="#" data-filter=@Model.ClassName>
+                            <h5>@Model.Name</h5>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END PORTFOLIO FILTERING -->
+        </div>
+        <div class="row">
+            <div class="span12">
+                <div id="portfolio-wrap">
+                    <!-- portfolio item -->
+                    <div class="portfolio-item grid print game of thrones">
+                        <div class="portfolio">
+                            <a href="~/img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                                <img src="~/img/works/@Model.Picture" alt="" />
+                                <div class="portfolio-overlay">
+                                    <div class="thumb-info">
+                                        <h5>@Model.Name</h5>
+                                        <i class="icon-plus icon-2x"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end portfolio item --> 
+                    <div class="portfolio-item grid print design web">
+                        <div class="portfolio">
+                            <a href="~/img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                                <img src="~/img/works/2.png" alt="" />
+                                <div class="portfolio-overlay">
+                                    <div class="thumb-info">
+                                        <h5>Portfolio name</h5>
+                                        <i class="icon-plus icon-2x"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- /.container -->
