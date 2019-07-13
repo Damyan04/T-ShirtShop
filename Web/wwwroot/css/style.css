@@ -55,49 +55,59 @@ div, article, section, header, footer, nav, li {
 	content:".";
 	visibility:hidden; /* For clearing */
 }
-.wrapper::before {
 
+html, body {
+    height: 100%;
+    margin: 0;
+  
 }
-
 body {
     background: #fff;
-    background-image: url("../img/background.jpg");
-    height: 100%;
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     color: #444;
     font-size: 16px;
     font-weight: 300;
     font-family: 'Open Sans', Arial, sans-serif;
+  
+   
 }
 .wrapper {
+    background-image: url("../img/background.jpg");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    min-height: 100%;
+    margin-bottom:-50px;
 }
 .card {
+    margin-top: 10%;
+    margin-bottom: 12%;
     border-radius: 25px;
     border: 5px outset #fff;
-    
+   
 }
 .card-login {
-   
     padding: 60px;
-    max-width: initial;
+   
     display: inline-block;
+  
 }
 .sr-only {
     text-align: left;
     
 }
+#container {
+    min-height: calc(100vh - 40px);
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -50px;
+}
+
 body {
     padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 }
-.form-signin {
-   
-}
+
 ::-moz-selection {
 	color:#333;
 }
@@ -108,17 +118,19 @@ button[type="submit"] {
     margin-top: 8%;
 }
     /* scroll to top */
-    .scrollup {
+.scrollup {
     position: fixed;
     width: 32px;
     height: 32px;
     bottom: 20px;
     right: 20px;
+   
 }
 
 a.scrollup {
-	outline:0;
-	text-decoration:none;
+    outline: 0;
+    text-decoration: none;
+    display: none;
 }
 
 a.scrollup:hover,a.scrollup:active,a.scrollup:focus {
@@ -300,8 +312,8 @@ h2.pagetitle {
 ============================================================ */
 
 .navbar-fixed-top .container {
-/* Uncomment to make nav expand full width */
- /*	width: auto; */
+    /* Uncomment to make nav expand full width */
+    /* width: auto;  */
 }
 .navbar .brand {
 	margin-left:0;
@@ -333,7 +345,8 @@ h2.pagetitle {
 	background-color: #0b333f;
 }
 .navbar-wrapper {
-	overflow:hidden;
+    overflow: hidden;
+    margin-bottom: -50px;
 }
 #menu-main {
 	margin-top: 1.125em;
@@ -362,15 +375,14 @@ ul#menu-main > li > a:focus {
 /* =========================================================
 05. Page sections
 ============================================================ */
-
-/* === section header === */
-
-#header-wrapper {
-	width: 100%;
-	min-height: 600px;
-	margin-top: -60px;
-	padding-top:160px;
-	text-align:center;
+    /* === section header === */
+    #header-wrapper {
+    width: 100%;
+    margin-top: -60px;
+    padding-top: 160px;
+    text-align: center;
+    position: relative;
+    min-height: 100vh;
 }
 
 
@@ -1035,12 +1047,17 @@ div.cform-response-output {
 /* =========================================================
 06. Footer
 ============================================================ */
+.footer,
+.push {
+    height: 50px;
+}
 
 footer {
-	background: #2b2b2b;
-	text-align: center;
-	color: #ddd;
-	padding:50px 0 50px;
+    background: #2b2b2b;
+    text-align: center;
+    color: #ddd;
+    padding: 50px 0 50px;
+   
 }
 
 footer a {
@@ -1721,6 +1738,7 @@ i.icon-white {
  .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
  margin-left: auto;
  margin-right: auto;
+
 }
 		
 /* Contact Form */

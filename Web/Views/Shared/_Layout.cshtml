@@ -48,7 +48,7 @@
                         <ul id="menu-main" class="nav">
                             <li><a title="categories" asp-controller="Categories" asp-action="Categories">Categories</a></li>
                             <li><a title="designer">Designer</a></li>
-                           
+
                             <li><a title="login" asp-controller="Login" asp-action="Login">Login</a></li>
                             <li><a href="page.html">Register</a></li>
                         </ul>
@@ -58,11 +58,12 @@
         </div>
     </div>
     <!-- Header area -->
-   
 
-        @RenderBody()
+
+    @RenderBody()
+
   
-
+    
     <!-- Start Footer bottom Area -->
     <footer>
         <partial name="_CookieConsentPartial" />
@@ -92,11 +93,11 @@
         </div>
         <!-- ./container -->
     </footer>
-    <a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
+    <a href="#" class="scrollup" id="myBtn"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
 
     <environment include="Development">
 
-        <script src="~/js/jquery.js"></script>
+        <script src="~/lib/jquery/jquery.min.js"></script>
         <script src="~/js/jquery.scrollTo.js"></script>
         <script src="~/js/jquery.nav.js"></script>
         <script src="~/js/jquery.localScroll.js"></script>
@@ -129,7 +130,7 @@
     </environment>
     <!-- Contact Form JavaScript File -->
 
-  
+
 
     @RenderSection("Scripts", required: false)
 </body>

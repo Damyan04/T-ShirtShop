@@ -5,17 +5,17 @@
 }
 
 <div class="wrapper">
-    <div class="card card-login mx-auto text-center bg-dark">
+    <div class="col card card-login mx-auto text-center">
         <form class="form-signin" method="post" asp-controller="Account" asp-action="Login" asp-route-returnurl="@Model.ReturnUrl">
             <div asp-validation-summary="ModelOnly"></div>
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
             <label asp-for="Username" class="sr-only">Username</label>
-            <input asp-for="Username" class="form-control form-control-lg" placeholder="Username" required="" autofocus="" />
+            <input asp-for="Username" class="form-control form-control-lg" align="left" placeholder="Username" required="" autofocus="" />
             <span asp-validation-for="Username"></span>
 
             <label asp-for="Password" class="sr-only">Password</label>
-            <input asp-for="Password" class="form-control form-control-lg" placeholder="Password" required="" />
+            <input asp-for="Password" class="form-control form-control-lg" align="left" placeholder="Password" required="" />
             <span asp-validation-for="Password"></span>
 
             <div class="checkbox mb-3">

@@ -1,11 +1,23 @@
 jQuery(document).ready(function($) {
+    window.onscroll = function () { scrollFunction() };
 
-
-	$('.scrollup').click(function(){
-		$("html, body").animate({ scrollTop: 0 }, 1000);
-		return false;
-	});
 	
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+    
+        $('.scrollup').click(function () {
+            $("html, body").animate({ scrollTop: 0 }, 1000);
+            
+            return false;
+        });
+    
+    
+   
 		$('.accordion').on('show', function (e) {
 		
 			$(e.target).prev('.accordion-heading').find('.accordion-toggle').addClass('active');
@@ -85,19 +97,19 @@ jQuery(document).ready(function($) {
 	
 	// cache container
 	var $container = $('#portfolio-wrap');
-	$.browser.safari = ($.browser.webkit && !(/chrome/.test(navigator.userAgent.toLowerCase())));	
+	//$.browser.safari = ($.browser.webkit && !(/chrome/.test(navigator.userAgent.toLowerCase())));	
 	
-	if($.browser.safari){ 	
-	// initialize isotope
-	$container.isotope({
-		animationEngine : 'jquery',
-		animationOptions: {
-			duration: 200,
-			queue: false
-		},
-		layoutMode: 'fitRows'
-	});
-	} else {	
+	//if($.browser.safari){ 	
+	//// initialize isotope
+	//$container.isotope({
+	//	animationEngine : 'jquery',
+	//	animationOptions: {
+	//		duration: 200,
+	//		queue: false
+	//	},
+	//	layoutMode: 'fitRows'
+	//});
+	//} else {	
 	$container.isotope({
 		animationEngine : 'best-available',
 		animationOptions: {
@@ -110,7 +122,7 @@ jQuery(document).ready(function($) {
 	$(window).resize(function() {
 		$container.isotope('reLayout');
 	});
-	}
+	
 	// filter items when filter link is clicked
 	$('#filters a').click(function(){
 		$('#filters a').removeClass('active');
@@ -135,8 +147,6 @@ jQuery(document).ready(function($) {
 		useCSS: false
 	});
 });
-    $(window).load(function () {
-        $('#preloader').fadeOut('slow', function () { $(this).remove(); });
-    });
+   
 	
 	
