@@ -7,12 +7,18 @@ using Shop_T.Models.Login;
 
 namespace Shop_T.Controllers
 {
-    public class LoginController : Controller
+    public class AccountController : Controller
     {
         public IActionResult Login(string returnUrl = "")
         {
             var model = new LoginViewModel { ReturnUrl = returnUrl };
             return View(model);
         }
+        public IActionResult Register(string returnUrl = "")
+        {
+           // var model = new LoginViewModel { ReturnUrl = returnUrl };
+            return View();
+        }
+
     }
 }
