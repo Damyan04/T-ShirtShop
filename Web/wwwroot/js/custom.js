@@ -96,7 +96,7 @@ jQuery(document).ready(function($) {
 		
 	
 	// cache container
-	var $container = $('#portfolio-wrap');
+	var $container = $('#product-item-wrap');
 	//$.browser.safari = ($.browser.webkit && !(/chrome/.test(navigator.userAgent.toLowerCase())));	
 	
 	//if($.browser.safari){ 	
