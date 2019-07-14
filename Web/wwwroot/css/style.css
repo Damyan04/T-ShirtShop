@@ -40,7 +40,6 @@ CONTENTS:
 @import url('animate.css');
 
 
-
 /* =========================================================
 01. General
 ============================================================ */
@@ -77,15 +76,18 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
-    min-height: 100%;
-    margin-bottom:-50px;
+    min-height: 100vh;
+    margin-bottom: -50px;
+    padding-top: 1px;
+    margin-top: -1px;
+    overflow:auto;
 }
 .card {
-    margin-top: 10%;
+    margin-top: 20%;
     margin-bottom: 12%;
     border-radius: 25px;
     border: 5px outset #fff;
-   
+  
 }
 .card-login {
     padding: 60px;
@@ -97,6 +99,7 @@ body {
     text-align: left;
     
 }
+
 #container {
     min-height: calc(100vh - 40px);
     /* Equal to height of footer */
@@ -125,6 +128,9 @@ button[type="submit"] {
     bottom: 20px;
     right: 20px;
    
+}
+.works{
+    min-height:50vh;
 }
 
 a.scrollup {
@@ -313,7 +319,9 @@ h2.pagetitle {
 
 .navbar-fixed-top .container {
     /* Uncomment to make nav expand full width */
-    /* width: auto;  */
+    /* width: auto;*/
+    min-height: 20%;
+    max-height:50%;
 }
 .navbar .brand {
 	margin-left:0;
@@ -377,12 +385,12 @@ ul#menu-main > li > a:focus {
 ============================================================ */
     /* === section header === */
     #header-wrapper {
-    width: 100%;
+   min-height:35vh;
     margin-top: -60px;
     padding-top: 160px;
     text-align: center;
     position: relative;
-    min-height: 100vh;
+   
 }
 
 
@@ -557,7 +565,9 @@ section.spacer blockquote cite {
 #works h4 {
 	margin-bottom:20px;
 }
-
+#product-item {
+    padding-bottom: 0;
+}
 #portfolio {
 	padding-bottom: 0;
 }
@@ -603,24 +613,167 @@ section.spacer blockquote cite {
 }
 
 
+/* === product-item wrap - grid === */
+#product-item-wrap {
+    position: relative;
+    padding: 0;
+   
+    margin: 0 auto;
+    display: flex;
+}
 
+    
 
+.product-item-item {
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    display:inline-grid;
+   
+   
+}
+#produrct-item-wrap .grid {
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    line-height: 0;
+    width: 35%;
+    border: 0;
+    padding: 0;
+}
+    .product-item-item:hover {
+        box-shadow: 0px 0px 6px 0px #d1d1d1;
+        text-decoration: none;
+    }
+
+    .product-item-item .product-item-image {
+        overflow: hidden;
+        display: block;
+        position: relative;
+    }
+
+        .product-item-item .product-item-image img {
+            width: 100%;
+            height: auto;
+        }
+
+.product-item .product-item-overlay {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: block;
+    z-index: 4;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-item > a, .product-item > a:hover {
+    color: #ffffff;
+}
+
+.product-item-item .product-item > a:hover > .product-item-overlay {
+    opacity: 1;
+    -moz-opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.product-item > a img {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-item > a:hover img {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-item .thumb-info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-item a:hover .product-item-overlay .thumb-info {
+    opacity: 1;
+    -moz-opacity: 1;
+    filter: alpha(opacity=100);
+    background-color: #1BAC91;
+}
+
+.product-item-overlay .thumb-info i {
+    top: 50%;
+}
+
+.product-item-overlay .thumb-info h5 {
+    top: 20%;
+    font-size: 18px;
+}
+
+.product-item-overlay .thumb-info p {
+    top: 50%;
+    font-size: 13px;
+}
+
+.product-item-overlay .thumb-info h5 {
+    color: #ffffff;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+}
+
+.product-item-overlay .thumb-info p {
+    color: #ffffff;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+}
+
+.product-item-overlay .thumb-info i {
+    color: #ffffff;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    display: block;
+}
 /* === portfolio wrap - grid === */
 #portfolio-wrap {
-	position: relative;
-	padding: 0;
-	width: 100.1%;
-	margin: 0 auto;
-	display: block;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
 }
-#portfolio-wrap .grid {
-	margin: 0;
-	overflow: hidden;
-	line-height: 0;
-	width: 20%;
-	border:0;
-	padding: 0;
-}
+    #portfolio-wrap .grid {
+        margin-left: 10px;
+        margin-right: 10px;
+        overflow: hidden;
+        line-height: 0;
+        width: 35%;
+        border: 0;
+        padding: 0;
+    }
 .portfolio-item.current {
 	z-index: 101;
 }
@@ -634,10 +787,11 @@ section.spacer blockquote cite {
 	display: block;
 	position: relative;
 }
-.portfolio-item .portfolio-image img {
-	width: 100%;
-	height: auto;
-}
+    .portfolio-item .portfolio-image img {
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
 .portfolio .portfolio-overlay {
 	width: 100%;
 	height: 100%;
@@ -1623,11 +1777,11 @@ i.icon-white {
 	.navbar-inner .btn-navbar {
 		margin:20px 20px 0;
 	}
-	
-	.container {
-	 padding-right: 20px;
-	 padding-left: 20px;
-	}	
+
+    .container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }	
 	.navbar-inverse .navbar-inner {
 		padding:0 0 30px;
 	}
@@ -1671,8 +1825,11 @@ i.icon-white {
 		width:100%;
 	}
 	#portfolio-wrap .grid {
-		width: 25%;
+		width: 30%;
 	}
+    #product-item-wrap .grid {
+      
+    }
 }
     
     /* Smaller screens ----------- */
@@ -1690,8 +1847,11 @@ i.icon-white {
 	}
 
 	#portfolio-wrap .grid {
-		width: 50%;
+		width: 30%;
 	}
+    #product-item-wrap .grid {
+       
+    }
 
 }
     

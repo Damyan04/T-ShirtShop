@@ -120,7 +120,7 @@ jQuery(document).ready(function($) {
 	});	
 	
 	$(window).resize(function() {
-		$container.isotope('reLayout');
+		$container.isotope('layout');
 	});
 	
 	// filter items when filter link is clicked

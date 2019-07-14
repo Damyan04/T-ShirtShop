@@ -1,55 +1,126 @@
-﻿@{
+﻿@model Shop_T.Models.TShirtsViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
     <div id="container">
         <div id="header-wrapper" class="header-slider">
             <header class="clearfix">
-                <div class="logo">
-                    <img src="img/logo-image.png" alt="" />
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="span12">
-                            <div id="main-flexslider" class="flexslider">
-                                <ul class="slides">
-                                    <li>
-                                        <p class="home-slide-content">
-                                            <strong>creative</strong> and passion
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="home-slide-content">
-                                            Eat and drink <strong>design</strong>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="home-slide-content">
-                                            We loves <strong>simplicity</strong>
-                                        </p>
-                                    </li>
-                                </ul>
+                <div class="row ">
+                    <div class="col">
+                        <div class="logo">
+                            <img src="img/logo-image.png" alt="" />
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="span12">
+                                    <div id="main-flexslider" class="flexslider">
+                                        <ul class="slides">
+                                            <li>
+                                                <p class="home-slide-content">
+                                                    <strong>creative</strong> and passion
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p class="home-slide-content">
+                                                    Eat and drink <strong>design</strong>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p class="home-slide-content">
+                                                    We loves <strong>simplicity</strong>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- end slider -->
+                                </div>
                             </div>
-                            <!-- end slider -->
                         </div>
                     </div>
                 </div>
-            </header>
+</header>
         </div>
-        <!-- spacer section -->
-        <section class="spacer green">
+        <section id="works" class="section">
+          
             <div class="container">
-                <div class="row">
-                    <div class="span6 alignright flyLeft">
-                        <blockquote class="large">
-                            There's huge space beetween creativity and imagination <cite>Mark Simmons, Nett Media</cite>
-                        </blockquote>
-                    </div>
-                    <div class="span6 aligncenter flyRight">
-                        <i class="icon-coffee icon-10x"></i>
+                
+                    <!-- spacer section -->
+                <div class="row ">
+                    <div id="product-item-wrap">
+                        <!-- product-item item -->
+                        <!-- product-item item -->
+                        <div class="col">
+                            <div class="product-item-item grid">
+                                <div class="product-item">
+                                    <a href="~/img/tshirts/@Model.Picture" data-pretty="prettyPhoto[gallery1]" class="product-item-image">
+                                        <img src="~/img/tshirts/@Model.Picture" class="" alt="Responsive image" />
+                                        <div class="product-item-overlay">
+                                            <div class="thumb-info">
+                                                <h5>@Model.Name</h5>
+                                                <i class="icon-edit-sign icon-2x"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- product-item item -->
+                        <div class="col">
+                            <div class="product-item-item grid">
+                                <div class="product-item">
+                                    <a href="~/img/tshirts/@Model.Picture" data-pretty="prettyPhoto[gallery1]" class="product-item-image">
+                                        <img src="~/img/tshirts/@Model.Picture" class="" alt="Responsive image" />
+                                        <div class="product-item-overlay">
+                                            <div class="thumb-info">
+                                                <h5>@Model.Name</h5>
+                                                <i class="icon-edit-sign icon-2x"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- product-item item -->
+                        <div class="col">
+                            <div class="product-item-item grid">
+                                <div class="product-item">
+                                    <a href="~/img/tshirts/@Model.Picture" data-pretty="prettyPhoto[gallery1]" class="product-item-image">
+                                        <img src="~/img/tshirts/@Model.Picture" class="" alt="Responsive image" />
+                                        <div class="product-item-overlay">
+                                            <div class="thumb-info">
+                                                <h5>@Model.Name</h5>
+                                                <i class="icon-edit-sign icon-2x"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="product-item-item grid">
+                                <div class="product-item">
+                                    <a href="~/img/tshirts/@Model.Picture" data-pretty="prettyPhoto[gallery1]" class="product-item-image">
+                                        <img src="~/img/tshirts/@Model.Picture" class="" alt="Responsive image" />
+                                        <div class="product-item-overlay">
+                                            <div class="thumb-info">
+                                                <h5>@Model.Name</h5>
+                                                <i class="icon-edit-sign icon-2x"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </section>
-        <div class="push"></div>
+            <div class="push"></div>
     </div>
 <!-- end spacer section -->

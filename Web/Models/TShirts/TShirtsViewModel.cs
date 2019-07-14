@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Shop_T.Models.TShirtsViewModel
+namespace Shop_T.Models
 {
     public class TShirtsViewModel 
     {
         public string Name { get; set; } = "GOT T";
 
-        public string Picture { get; set; } = "~/img/tshirts/Got2.jpeg";
+        public string Picture { get; set; } = "Got2.jpg";
 
         public List<string> Sizes { get; set; } = new List<string>() { "S", "M", "L", "XL" }; //TODO:make it enum 
 

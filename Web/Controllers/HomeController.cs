@@ -12,7 +12,8 @@ namespace Shop_T.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var tshirts = new TShirtsViewModel();
+            return View(tshirts);
         }
 
         public IActionResult Privacy()

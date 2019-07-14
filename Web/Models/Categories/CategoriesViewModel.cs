@@ -11,6 +11,6 @@ namespace Shop_T.Models
 
         //public byte[] Picture { get; set; }
         public string Picture { get; set; } = "GOT.jpg";
-        public string ClassName { get; set; } = ".game of thrones";
+        public string ClassName { get; set; } = ".game-of-thrones";
     }
 }
