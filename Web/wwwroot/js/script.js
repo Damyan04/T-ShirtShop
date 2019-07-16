@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#tshirttype").change(function () {
         $("img[name=tshirtview]").attr("src", $(this).val());
-
+        $("#flipback").attr('data-original-title', 'Show Back View');
     });
 
 });
@@ -11,10 +11,11 @@ $("#tshirttype").change(function () {
 });
 $('#flipback').click(
     function () {
-        if (valueSelect === "~/img/crew_front.png") {
+        if (valueSelect === "../img/crew_front.png") {
             if ($(this).attr("data-original-title") == "Show Back View") {
                 $(this).attr('data-original-title', 'Show Front View');
-                $("#tshirtFacing").attr("src", "~/img/crew_back.png");
+               
+                $("#tshirtFacing").attr("src", "../img/crew_back.png");
                 a = JSON.stringify(canvas);
                 canvas.clear();
                 try {
@@ -25,7 +26,8 @@ $('#flipback').click(
 
             } else {
                 $(this).attr('data-original-title', 'Show Back View');
-                $("#tshirtFacing").attr("src", "~/img/crew_front.png");
+               
+                $("#tshirtFacing").attr("src", "../img/crew_front.png");
                 b = JSON.stringify(canvas);
                 canvas.clear();
                 try {
@@ -36,10 +38,10 @@ $('#flipback').click(
             }
         }
 
-        else if (valueSelect === "~/img/mens_longsleeve_front.png") {
+        else if (valueSelect === "../img/mens_longsleeve_front.png") {
             if ($(this).attr("data-original-title") == "Show Back View") {
                 $(this).attr('data-original-title', 'Show Front View');
-                $("#tshirtFacing").attr("src", "~/img/mens_longsleeve_back.png");
+                $("#tshirtFacing").attr("src", "../img/mens_longsleeve_back.png");
                 a = JSON.stringify(canvas);
                 canvas.clear();
                 try {
@@ -50,7 +52,7 @@ $('#flipback').click(
 
             } else {
                 $(this).attr('data-original-title', 'Show Back View');
-                $("#tshirtFacing").attr("src", "~/img/mens_longsleeve_front.png");
+                $("#tshirtFacing").attr("src", "../img/mens_longsleeve_front.png");
                 b = JSON.stringify(canvas);
                 canvas.clear();
                 try {
@@ -60,10 +62,10 @@ $('#flipback').click(
                 catch (e) { }
             }
         }
-        else if (valueSelect === "~/img/mens_tank_front.png") {
+        else if (valueSelect === "../img/mens_tank_front.png") {
             if ($(this).attr("data-original-title") == "Show Back View") {
                 $(this).attr('data-original-title', 'Show Front View');
-                $("#tshirtFacing").attr("src", "~/img/mens_tank_back.png");
+                $("#tshirtFacing").attr("src", "../img/mens_tank_back.png");
                 a = JSON.stringify(canvas);
                 canvas.clear();
                 try {
@@ -74,7 +76,7 @@ $('#flipback').click(
 
             } else {
                 $(this).attr('data-original-title', 'Show Back View');
-                $("#tshirtFacing").attr("src", "~/img/mens_tank_front.png");
+                $("#tshirtFacing").attr("src", "../img/mens_tank_front.png");
                 b = JSON.stringify(canvas);
                 canvas.clear();
                 try {
@@ -84,10 +86,10 @@ $('#flipback').click(
                 catch (e) { }
             }
         }
-        else if (valueSelect === "~/img/mens_hoodie_front.png") {
+        else if (valueSelect === "../img/mens_hoodie_front.png") {
             if ($(this).attr("data-original-title") == "Show Back View") {
                 $(this).attr('data-original-title', 'Show Front View');
-                $("#tshirtFacing").attr("src", "~/img/mens_hoodie_back.png");
+                $("#tshirtFacing").attr("src", "../img/mens_hoodie_back.png");
                 a = JSON.stringify(canvas);
                 canvas.clear();
                 try {
@@ -98,7 +100,7 @@ $('#flipback').click(
 
             } else {
                 $(this).attr('data-original-title', 'Show Back View');
-                $("#tshirtFacing").attr("src", "~/img/mens_hoodie_front.png");
+                $("#tshirtFacing").attr("src", "../img/mens_hoodie_front.png");
                 b = JSON.stringify(canvas);
                 canvas.clear();
                 try {
