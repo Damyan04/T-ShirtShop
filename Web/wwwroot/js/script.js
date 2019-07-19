@@ -5,10 +5,22 @@ $(document).ready(function () {
     });
 
 });
+
+
 var valueSelect = $("#tshirttype").val();
 $("#tshirttype").change(function () {
     valueSelect = $(this).val();
 });
+$('#clear-selected').click(
+    function () {
+        
+        canvas.deactivateAll().renderAll();
+    });
+$('#save-selected').click(
+    function () {
+        onSelectedCleared();
+        canvas.deactivateAll().renderAll();
+    });
 $('#flipback').click(
     function () {
         if (valueSelect === "../img/crew_front.png") {
@@ -110,9 +122,17 @@ $('#flipback').click(
                 catch (e) { }
             }
         }
-        /*	if ($(this).attr("data-original-title") == "Show Back View") {
-                     $(this).attr('data-original-title', 'Show Front View');			        		       
-             $("#tshirtFacing").attr("src","img/crew_back.png");			        
+        onSelectedCleared();
+        canvas.renderAll();
+        setTimeout(function () {
+            canvas.calcOffset();
+        }, 200);
+        
+     
+    });	
+/*	if ($(this).attr("data-original-title") == "Show Back View") {
+                     $(this).attr('data-original-title', 'Show Front View');
+             $("#tshirtFacing").attr("src","img/crew_back.png");
              a = JSON.stringify(canvas);
              canvas.clear();
              try
@@ -122,25 +142,20 @@ $('#flipback').click(
              }
              catch(e)
              {}
-             
+
          } else {
-             $(this).attr('data-original-title', 'Show Back View');			    				    	
-             $("#tshirtFacing").attr("src","img/crew_front.png");			    	
+             $(this).attr('data-original-title', 'Show Back View');
+             $("#tshirtFacing").attr("src","img/crew_front.png");
              b = JSON.stringify(canvas);
              canvas.clear();
              try
              {
                 var json = JSON.parse(a);
-                canvas.loadFromJSON(a);			           
+                canvas.loadFromJSON(a);
              }
              catch(e)
              {}
          }		*/
-        canvas.renderAll();
-        setTimeout(function () {
-            canvas.calcOffset();
-        }, 200);
-    });	
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-35639689-1']);
 _gaq.push(['_trackPageview']);

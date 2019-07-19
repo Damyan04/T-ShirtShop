@@ -62,9 +62,11 @@ var line4;
 		      fontFamily: 'helvetica',
 		      angle: 0,
 		      fill: '#000000',
-		      scaleX: 0.5,
-		      scaleY: 0.5,
-		      fontWeight: '',
+		      scaleX: 0.9,
+		      scaleY: 0.9,
+                fontWeight: '',
+                padding: 5,
+                cornersize: 24,                
 	  		  hasRotatingPoint:true
 		    });		    
             canvas.add(textSample);	
@@ -94,8 +96,8 @@ var line4;
 		            left: left,
 		            top: top,
 		            angle: 0,
-		            padding: 10,
-		            cornersize: 10,
+		            padding: 15,
+		            cornersize: 15,
 	      	  		hasRotatingPoint:true
 		          });
 		          //image.scale(getRandomNum(0.1, 0.25)).setCoords();
@@ -117,34 +119,7 @@ var line4;
 		      });
 		    }
 	  };
-	  document.getElementById('bring-to-front').onclick = function() {		  
-		    var activeObject = canvas.getActiveObject(),
-		        activeGroup = canvas.getActiveGroup();
-		    if (activeObject) {
-		      activeObject.bringToFront();
-		    }
-		    else if (activeGroup) {
-		      var objectsInGroup = activeGroup.getObjects();
-		      canvas.discardActiveGroup();
-		      objectsInGroup.forEach(function(object) {
-		        object.bringToFront();
-		      });
-		    }
-	  };
-	  document.getElementById('send-to-back').onclick = function() {		  
-		    var activeObject = canvas.getActiveObject(),
-		        activeGroup = canvas.getActiveGroup();
-		    if (activeObject) {
-		      activeObject.sendToBack();
-		    }
-		    else if (activeGroup) {
-		      var objectsInGroup = activeGroup.getObjects();
-		      canvas.discardActiveGroup();
-		      objectsInGroup.forEach(function(object) {
-		        object.sendToBack();
-		      });
-		    }
-	  };		  
+	  
 	  $("#text-bold").click(function() {		  
 		  var activeObject = canvas.getActiveObject();
 		  if (activeObject && activeObject.type === 'text') {
@@ -267,43 +242,43 @@ var line4;
 	    );
 	   
 	   $('.color-preview').click(function(){
-		   var color = $(this).css("background-color");
+		   let color = $(this).css("background-color");
 		   document.getElementById("shirtDiv").style.backgroundColor = color;		   
 	   });
 	   
-	   $('#flip').click(
-		   function() {			   
-			   	if ($(this).attr("data-original-title") == "Show Back View") {
-			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","~/img/crew_back.png");			        
-			        a = JSON.stringify(canvas);
-			        canvas.clear();
-			        try
-			        {
-			           var json = JSON.parse(b);
-			           canvas.loadFromJSON(b);
-			        }
-			        catch(e)
-			        {}
+	   //$('#flip').click(
+		  // function() {			   
+			 //  	if ($(this).attr("data-original-title") == "Show Back View") {
+			 //  		$(this).attr('data-original-title', 'Show Front View');			        		       
+			 //       $("#tshirtFacing").attr("src","~/img/crew_back.png");			        
+			 //       a = JSON.stringify(canvas);
+			 //       canvas.clear();
+			 //       try
+			 //       {
+			 //          var json = JSON.parse(b);
+			 //          canvas.loadFromJSON(b);
+			 //       }
+			 //       catch(e)
+			 //       {}
 			        
-			    } else {
-			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","~/img/crew_front.png");			    	
-			    	b = JSON.stringify(canvas);
-			    	canvas.clear();
-			    	try
-			        {
-			           var json = JSON.parse(a);
-			           canvas.loadFromJSON(a);			           
-			        }
-			        catch(e)
-			        {}
-			    }		
-			   	canvas.renderAll();
-			   	setTimeout(function() {
-			   		canvas.calcOffset();
-			    },200);			   	
-        });	   
+			 //   } else {
+			 //   	$(this).attr('data-original-title', 'Show Back View');			    				    	
+			 //   	$("#tshirtFacing").attr("src","~/img/crew_front.png");			    	
+			 //   	b = JSON.stringify(canvas);
+			 //   	canvas.clear();
+			 //   	try
+			 //       {
+			 //          var json = JSON.parse(a);
+			 //          canvas.loadFromJSON(a);			           
+			 //       }
+			 //       catch(e)
+			 //       {}
+			 //   }		
+			 //  	canvas.renderAll();
+			 //  	setTimeout(function() {
+			 //  		canvas.calcOffset();
+			 //   },200);			   	
+    //    });	   
 	   $(".clearfix button,a").tooltip();
 	   line1 = new fabric.Line([0,0,200,0], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
 	   line2 = new fabric.Line([199,0,200,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
@@ -334,7 +309,7 @@ var line4;
 	    	$("#imageeditor").css('display', 'block');
 	    }
 	  }
-	 function onSelectedCleared(e){
+	 function onSelectedCleared(){
 		 $("#texteditor").css('display', 'none');
 		 $("#text-string").val("");
 		 $("#imageeditor").css('display', 'none');
