@@ -3,18 +3,16 @@ $(document).ready(function () {
         $("img[name=tshirtview]").attr("src", $(this).val());
         $("#flipback").attr('data-original-title', 'Show Back View');
     });
-
-});
-
-
+  
 var valueSelect = $("#tshirttype").val();
 $("#tshirttype").change(function () {
     valueSelect = $(this).val();
 });
 $('#clear-selected').click(
     function () {
-        
+       
         canvas.deactivateAll().renderAll();
+        
     });
 $('#save-selected').click(
     function () {
@@ -130,32 +128,7 @@ $('#flipback').click(
         
      
     });	
-/*	if ($(this).attr("data-original-title") == "Show Back View") {
-                     $(this).attr('data-original-title', 'Show Front View');
-             $("#tshirtFacing").attr("src","img/crew_back.png");
-             a = JSON.stringify(canvas);
-             canvas.clear();
-             try
-             {
-                var json = JSON.parse(b);
-                canvas.loadFromJSON(b);
-             }
-             catch(e)
-             {}
 
-         } else {
-             $(this).attr('data-original-title', 'Show Back View');
-             $("#tshirtFacing").attr("src","img/crew_front.png");
-             b = JSON.stringify(canvas);
-             canvas.clear();
-             try
-             {
-                var json = JSON.parse(a);
-                canvas.loadFromJSON(a);
-             }
-             catch(e)
-             {}
-         }		*/
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-35639689-1']);
 _gaq.push(['_trackPageview']);
@@ -165,3 +138,4 @@ _gaq.push(['_trackPageview']);
 //    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 //    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 //})();
+});
