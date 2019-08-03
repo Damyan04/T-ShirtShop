@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
+
 using System.Text;
 
 namespace Shop_T.Data.Models
@@ -14,6 +16,8 @@ namespace Shop_T.Data.Models
         public int Stars{ get; set; }
         public string Comment{ get; set; }
 
-        public User IsUser { get; set; }
+
+        public string UserId { get; set; }
+        public IdentityUser User { get; set; }
     }
 }

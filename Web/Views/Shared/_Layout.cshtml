@@ -48,13 +48,14 @@
                     <h1 class="brand"><a asp-controller="Home" asp-action="Index">T-ShirtShop</a></h1>
                     <!-- navigation -->
                     <nav class="pull-right nav-collapse collapse">
+					    
                         <ul id="menu-main" class="nav">
                             <li><a title="categories" asp-controller="Categories" asp-action="Categories">Categories</a></li>
                             <li><a title="designer" asp-controller="Products" asp-action="Designer">Designer</a></li>
+                            <partial name="_LoginPartial" />
 
-                            <li><a title="login" asp-controller="Account" asp-action="Login">Login</a></li>
-                            <li><a asp-controller="Account" asp-action="Register">Register</a></li>
                         </ul>
+						 
                     </nav>
                 </div>
             </div>

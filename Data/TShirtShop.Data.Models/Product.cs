@@ -14,6 +14,10 @@ namespace Shop_T.Data.Models
         //- Sizes (enum)
         //- Colours (enum)
         //- Design picture (string)
+        public Product()
+        {
+            Tags = new HashSet<Tag>();
+        }
         public string Id { get; set; }
         public decimal Price { get; set; }
 
@@ -21,5 +25,9 @@ namespace Shop_T.Data.Models
         public Colors Color { get; set; }
         public byte[] Picture { get; set; }
         public IEnumerable<Tag> Tags{get;set;}
+
+        public string CategoryId { get; set; }
+        public Category Category{ get; set; }
+
     }
 }

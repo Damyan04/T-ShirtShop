@@ -9,7 +9,12 @@ namespace Shop_T.Data.Models
         //      List of Products(List)
         //- Quantity(int)
         //- Isuser(User) NEED Research
+        public ShoppingCart()
+        {
+            Orders = new HashSet<Order>();
+        }
+        public string Id { get; set; }
         public IEnumerable<Order> Orders { get; set; }
-        public User IsUser { get; set; }
+        //public User IsUser { get; set; }
     }
 }
