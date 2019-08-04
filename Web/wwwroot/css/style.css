@@ -57,8 +57,8 @@ div, article, section, header, footer, nav, li {
 
 html, body {
     height: 100%;
+    padding: 0;
     margin: 0;
-  
 }
 body {
     background: #fff;
@@ -69,17 +69,9 @@ body {
   
    
 }
-.wrapper {
-    background-image: url("../img/background.jpg");
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.account {    
+
     text-align: center;
-    min-height: 100vh;
-    margin-bottom: -50px;
-    padding-top: 1px;
-    margin-top: -1px;
     overflow:auto;
 }
 .card {
@@ -97,10 +89,10 @@ body {
 }
 
 #container {
-    min-height: calc(100vh - 40px);
+    min-height: calc(100vh - 50px);
     /* Equal to height of footer */
     /* But also accounting for potential margin-bottom of last child */
-    margin-bottom: -50px;
+    margin-bottom: -100px;
     background-color:#fff;
 }
 
@@ -115,7 +107,7 @@ body {
 	color:#333;
 }
 button[type="submit"] {
-    margin-top: 8%;
+  
 }
     /* scroll to top */
 .scrollup {
@@ -235,6 +227,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: #312f2b;
 	line-height:1.1em;
 	font-family:'Open Sans', Arial, sans-serif;
+    text-align:center;
 }
 h1 {
 	font-size: 36px;
@@ -410,6 +403,25 @@ header .logo {
 	text-align:center;
 	margin-bottom:30px;
 }
+#menu-outer {
+    height: 84px;
+    background: url(images/bar-bg.jpg) repeat-x;
+}
+
+.table {
+    display: table; /* Allow the centering to work */
+    margin: 0 auto;
+}
+
+ul#horizontal-list {
+    min-width: 696px;
+    list-style: none;
+    padding-top: 20px;
+}
+
+    ul#horizontal-list li {
+        display: inline;
+    }
 
 /* --- Header slider --- */
 #header-wrapper.header-slider {
@@ -496,6 +508,7 @@ section.section h4 {
 	font-weight: 700;
 	letter-spacing: -1px;
 }
+
 section.inner {
 	padding: 50px 0 50px;
 }
@@ -2045,9 +2058,9 @@ body {
  padding: 1em 0;
 }
 
- #works .container {
- top: 0 !important;
-}
+    #works .container {
+        top: 0 !important;
+    }
 
 .max-img {
  width: 100%;
@@ -2064,17 +2077,19 @@ body {
  section#services h2, section#services ul {
  text-align: center;
 }
-		
 
-/* team */
-		
-#team .team-thumb {
- margin-right: auto;
- margin-left: auto;
- width: 150px;
- display: block;
- text-align:center
-}
+    #account{
+        text-align:center;
+        margin:auto;
+    }
+    /* team */
+    #team .team-thumb {
+        margin-right: auto;
+        margin-left: auto;
+        width: 150px;
+        display: block;
+        text-align: center
+    }
  .job-position:{
  margin-bottom: 1.5em;
 }
@@ -2089,7 +2104,7 @@ body {
 		overflow: hidden;
 	}
 	#contact-form input[type=submit] {
-		width: 100%;
+		
 	}
     .js div#preloader {
         position: fixed;
