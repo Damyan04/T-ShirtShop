@@ -9,6 +9,13 @@ namespace TShirtShop.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+
+
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -18,10 +25,12 @@ namespace TShirtShop.Data
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Categories { get; set; }
 
-     
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
+            // Needed for Identity models configuration
+            base.OnModelCreating(builder);
+
+
         }
     }
 }

@@ -39,7 +39,7 @@ namespace TShirtShop
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("TShirtShop")));
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
         // services.AddDefaultIdentity<IdentityUser>()
