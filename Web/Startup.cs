@@ -40,7 +40,8 @@ namespace TShirtShop
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultUI(UIFramework.Bootstrap4)
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddDefaultUI(UIFramework.Bootstrap4)
         // services.AddDefaultIdentity<IdentityUser>()
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
@@ -54,6 +55,7 @@ namespace TShirtShop
              options.AllowAreas = true;
              options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
              options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+             
          });
 
             services.ConfigureApplicationCookie(options =>

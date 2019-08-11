@@ -4,17 +4,19 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
+    <li><a title="designer" asp-controller="Products" asp-action="Designer">Designer</a></li>
     <li>
         <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Welcome @User.Identity.Name !</a>
     </li>
     <li>
         <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button class="myButton"type="submit">Logout</button>
+            <button class="myButton" type="submit">Logout</button>
         </form>
     </li>
 }
 else
 {
+
     <li>
         <a asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>

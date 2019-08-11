@@ -1,10 +1,11 @@
-﻿using Shop_T.Data.Models.Enums;
+﻿using TShirtShop.Data.Models.Enums;
 using System;
 using System.Collections.Generic;
+using TShirtShop.Data.Common.Models;
 
-namespace Shop_T.Data.Models
+namespace TShirtShop.Data.Models
 {
-    public class Product:IBaseModel
+    public class Product:IAuditInfo
     {
         //      - Id (string)
         //- Name (string)
@@ -28,6 +29,7 @@ namespace Shop_T.Data.Models
 
         public string CategoryId { get; set; }
         public Category Category{ get; set; }
-
+        public DateTime CreatedOn { get ; set ; }
+        public DateTime? ModifiedOn { get ; set ; }
     }
 }

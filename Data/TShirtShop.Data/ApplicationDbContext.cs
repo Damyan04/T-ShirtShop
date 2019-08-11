@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Shop_T.Data.Models;
+using TShirtShop.Data.Models;
 
 namespace TShirtShop.Data
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Shop_T.Data.Models
+namespace TShirtShop.Data.Models
 {
    public class ShoppingCart
     {

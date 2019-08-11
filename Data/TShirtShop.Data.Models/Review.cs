@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 
 using System.Text;
+using TShirtShop.Data.Common.Models;
 
-namespace Shop_T.Data.Models
+namespace TShirtShop.Data.Models
 {
-    public class Review : IBaseModel
+    public class Review : IAuditInfo
     {
         //       - Id(string)
         //- Starts(int)
@@ -19,5 +20,7 @@ namespace Shop_T.Data.Models
 
         public string UserId { get; set; }
         public IdentityUser User { get; set; }
+        public DateTime CreatedOn { get; set ; }
+        public DateTime? ModifiedOn { get ; set ; }
     }
 }

@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Shop_T.Data.Models
+﻿namespace TShirtShop.Data.Models
 {
-  public class Address
+    using System;
+    using Microsoft.AspNetCore.Identity;
+    using TShirtShop.Data.Common.Models;
+
+    public class Address:IAuditInfo
     {
        
         public string Id { get; set; }
@@ -15,5 +14,7 @@ namespace Shop_T.Data.Models
         public string Region { get; set; } //TOOD make it enum
         public string UserId { get; set; }
         public IdentityUser User{ get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime? ModifiedOn { get; set ; }
     }
 }

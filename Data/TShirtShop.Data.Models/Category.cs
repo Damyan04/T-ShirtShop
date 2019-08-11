@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TShirtShop.Data.Common.Models;
 
-namespace Shop_T.Data.Models
+namespace TShirtShop.Data.Models
 {
-    public class Category : IBaseModel
+    public class Category : IAuditInfo
     {
         //      - Id(string)
         //- Name(string)
@@ -20,5 +21,7 @@ namespace Shop_T.Data.Models
 
         public string TagId { get; set; }
         public Tag Tag { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime? ModifiedOn { get ; set ; }
     }
 }
