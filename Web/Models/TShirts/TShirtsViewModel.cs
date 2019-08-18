@@ -7,6 +7,7 @@ namespace Shop_T.Models
 {
     public class TShirtsViewModel 
     {
+        public string Id { get; set; }
         public string Name { get; set; } = "GOT T";
 
         public string Picture { get; set; } = "Got2.jpg";
