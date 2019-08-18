@@ -38,13 +38,19 @@ namespace Shop_T.Controllers
            // await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Designer));
         }
+        public IActionResult Item()
+        {
+            //TODO: make get a tshirt from the db and render the page
+            return View();
+        }
     }
 
-            // process uploaded files
-            // Don't rely on or trust the FileName property without validation.
+   
+    // process uploaded files
+    // Don't rely on or trust the FileName property without validation.
 
-           
-        
 
-    
+
+
+
 }
