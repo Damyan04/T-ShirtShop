@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using TShirtShop.Data.Common.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace TShirtShop.Data.Models
 {
@@ -20,6 +21,8 @@ namespace TShirtShop.Data.Models
             Tags = new HashSet<Tag>();
         }
         public string Id { get; set; }
+
+        [Range(0.00,double.MaxValue)]
         public decimal Price { get; set; }
 
         public Sizes Size { get; set; }
