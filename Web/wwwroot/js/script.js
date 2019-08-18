@@ -1,4 +1,34 @@
 $(document).ready(function () {
+    $('#flipback1').click(
+        function () {
+
+            if ($(this).attr("data-original-title") == "Show Back View") {
+                $(this).attr('data-original-title', 'Show Front View');
+
+                $("#tshirtFacing").attr("src", "../img/crew_back.png");
+                a = JSON.stringify(canvas);
+                canvas.clear();
+                try {
+                    var json = JSON.parse(b);
+                    canvas.loadFromJSON(b);
+                }
+                catch (e) { }
+
+            } else {
+                $(this).attr('data-original-title', 'Show Back View');
+
+                $("#tshirtFacing").attr("src", "../img/crew_front.png");
+                b = JSON.stringify(canvas);
+                canvas.clear();
+                try {
+                    var json = JSON.parse(a);
+                    canvas.loadFromJSON(a);
+                }
+                catch (e) { }
+            }
+        });
+        
+            
     $("#tshirttype").change(function () {
         $("img[name=tshirtview]").attr("src", $(this).val());
         $("#flipback").attr('data-original-title', 'Show Back View');

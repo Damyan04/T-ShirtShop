@@ -53,7 +53,12 @@ var line4;
 		  //e.target.setFill('green');
 		  //canvas.renderAll();
 		});
-		 		 	 
+          $('.color-preview').click(function () {
+              let color = $(this).css("background-color");
+              document.getElementById("shirtDiv").style.backgroundColor = color;
+          });	 
+
+
 		document.getElementById('add-text').onclick = function() {
 			var text = $("#text-string").val();
 		    var textSample = new fabric.Text(text, {
@@ -241,10 +246,7 @@ var line4;
 	        }
 	    );
 	   
-	   $('.color-preview').click(function(){
-		   let color = $(this).css("background-color");
-		   document.getElementById("shirtDiv").style.backgroundColor = color;		   
-	   });
+	 
 	     
 	   $(".clearfix button,a").tooltip();
 	   line1 = new fabric.Line([0,0,200,0], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
