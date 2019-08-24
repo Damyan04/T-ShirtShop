@@ -13,7 +13,7 @@
         public string PostCode { get; set; }
         public string Region { get; set; } //TOOD make it enum
         public string UserId { get; set; }
-        public IdentityUser User{ get; set; }
+        public ApplicationUser User{ get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime? ModifiedOn { get; set ; }
     }

@@ -20,7 +20,7 @@ namespace TShirtShop.Data.Models
         public string ProductId { get; set; }
         public Product Product { get; set; }
         public string UserId { get; set; }
-        public IdentityUser User { get; set; }
+        public ApplicationUser User { get; set; }
         public DateTime CreatedOn { get; set ; }
         public DateTime? ModifiedOn { get ; set ; }
 

@@ -21,7 +21,7 @@ namespace TShirtShop.Data.Models
         public int Quantity { get; set; } //range 0-max
         public Product Product{get;set;}
         public string UserId { get; set; }
-        public IdentityUser User { get; set; }
+        public ApplicationUser User { get; set; }
         public string ShippingAddress { get; set; }
 
         public PaymentOptions PaymentOptions { get; set; }

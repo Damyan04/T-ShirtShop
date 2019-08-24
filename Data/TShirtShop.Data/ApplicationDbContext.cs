@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TShirtShop.Data.Models;
 
 namespace TShirtShop.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
 
@@ -24,11 +25,12 @@ namespace TShirtShop.Data
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Categories { get; set; }
-
+       
         protected override void OnModelCreating(ModelBuilder builder)
         {
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
+         
 
 
         }
