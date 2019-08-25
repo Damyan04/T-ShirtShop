@@ -18,21 +18,22 @@ namespace TShirtShop.Data.Models
         //- Design picture (string)
         public Product()
         {
-            Tags = new HashSet<Tag>();
+            Tags = new HashSet<ProductTags>();
         }
         public string Id { get; set; }
-
+        [Required]
         [Range(0.00,double.MaxValue)]
-        public decimal Price { get; set; }
-
+        public double Price { get; set; }
+        [Required]
         public Sizes Size { get; set; }
+         [Required]
         public Colors Color { get; set; }
         public byte[] Picture { get; set; }
-        public IEnumerable<Tag> Tags{get;set;}
+        public ICollection<ProductTags> Tags{get;set;}
 
-        public string CategoryId { get; set; }
-        public Category Category{ get; set; }
-        public DateTime CreatedOn { get ; set ; }
-        public DateTime? ModifiedOn { get ; set ; }
+        //public string CategoryId { get; set; }
+        //public Category Category{ get; set; }
+        public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
+        public DateTime? ModifiedOn { get; set; } = null;
     }
 }

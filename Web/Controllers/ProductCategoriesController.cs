@@ -8,10 +8,10 @@ using Shop_T.Models;
 
 namespace Shop_T.Controllers
 {
-    public class CategoriesController : Controller
+    public class ProductCategoriesController : Controller
     {
         [AllowAnonymous]
-        public IActionResult Categories()
+        public IActionResult TShirts()
         {
             var categories = new CategoriesViewModel();
             return View(categories);

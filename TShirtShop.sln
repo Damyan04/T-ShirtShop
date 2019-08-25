@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TShirtShop.Data", "Data\TSh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TShirtShop.Data.Models", "Data\TShirtShop.Data.Models\TShirtShop.Data.Models.csproj", "{C6B87C6C-68DE-4747-99AE-A9B1CE444E36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TShirtShop.Services", "Services\TShirtShop.Services\TShirtShop.Services.csproj", "{4FEA4A18-E344-4141-BAC2-32FE598D0B40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TShirtShop.Services", "Services\TShirtShop.Services\TShirtShop.Services.csproj", "{4FEA4A18-E344-4141-BAC2-32FE598D0B40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TShirtShop.Data.Common", "Data\AspNetCoreTemplate.Data.Common\TShirtShop.Data.Common.csproj", "{9477625C-BB21-43AD-BE13-0C01A713F1F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TShirtShop.Data.Common", "Data\AspNetCoreTemplate.Data.Common\TShirtShop.Data.Common.csproj", "{9477625C-BB21-43AD-BE13-0C01A713F1F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TShirtShop.Services.Data", "Services\TShirtShop.Services.Data\TShirtShop.Services.Data.csproj", "{7599C6C2-9DBD-424B-87BB-8075FD325F00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{9477625C-BB21-43AD-BE13-0C01A713F1F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9477625C-BB21-43AD-BE13-0C01A713F1F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9477625C-BB21-43AD-BE13-0C01A713F1F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7599C6C2-9DBD-424B-87BB-8075FD325F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7599C6C2-9DBD-424B-87BB-8075FD325F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7599C6C2-9DBD-424B-87BB-8075FD325F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7599C6C2-9DBD-424B-87BB-8075FD325F00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

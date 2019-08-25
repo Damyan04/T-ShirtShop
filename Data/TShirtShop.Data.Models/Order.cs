@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TShirtShop.Data.Common.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace TShirtShop.Data.Models
 {
@@ -16,21 +17,23 @@ namespace TShirtShop.Data.Models
         //- Isuser(User)
         //- Shipping address(string)
         //- Payment option(enum)
-        
+        [Required]
+        [Key]
         public string Id { get ; set ; }
+        [Required]
+        [Range(0,int.MaxValue)]
         public int Quantity { get; set; } //range 0-max
         public Product Product{get;set;}
+        [Required]
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
         public string ShippingAddress { get; set; }
-
+        [Required]
         public PaymentOptions PaymentOptions { get; set; }
-
-        public DateTime  IssuedOn{ get; set; }
-
-        public string ShoppingCartId { get; set; }
-        public ShoppingCart ShoppingCart { get; set; }
-        public DateTime CreatedOn { get ; set ; }
-        public DateTime? ModifiedOn { get ; set ; }
+        
+        //public string ShoppingCartId { get; set; }
+        //public ShoppingCartItem ShoppingCart { get; set; }
+        public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
+        public DateTime? ModifiedOn { get; set; } = null;
     }
 }

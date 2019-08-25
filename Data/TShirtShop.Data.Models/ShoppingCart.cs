@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TShirtShop.Data.Common.Models;
 
 namespace TShirtShop.Data.Models
 {
-   public class ShoppingCart
+    public class ShoppingCart:IAuditInfo
     {
-        //      List of Products(List)
-        //- Quantity(int)
-        //- Isuser(User) NEED Research
         public ShoppingCart()
         {
-            Orders = new HashSet<Order>();
+         ShoppingCartItems=   new HashSet<ShoppingCartItem>();
         }
         public string Id { get; set; }
-        public IEnumerable<Order> Orders { get; set; }
-        //public User IsUser { get; set; }
+        public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
+
+        public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
+
+        public DateTime? ModifiedOn { get; set; } = null;
     }
 }

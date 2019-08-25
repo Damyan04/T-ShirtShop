@@ -138,19 +138,21 @@ namespace TShirtShop.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("City");
+                    b.Property<string>("City")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreatedOn");
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("PostCode");
+                    b.Property<string>("PostCode")
+                        .IsRequired();
 
-                    b.Property<string>("Region");
+                    b.Property<string>("Street")
+                        .IsRequired();
 
-                    b.Property<string>("Street");
-
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -178,7 +180,7 @@ namespace TShirtShop.Data.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
-                    b.Property<decimal>("MoneySpent");
+                    b.Property<double>("MoneySpent");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -221,9 +223,11 @@ namespace TShirtShop.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
-                    b.Property<string>("TagId");
+                    b.Property<string>("TagId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -239,8 +243,6 @@ namespace TShirtShop.Data.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
-                    b.Property<DateTime>("IssuedOn");
-
                     b.Property<DateTime?>("ModifiedOn");
 
                     b.Property<int>("PaymentOptions");
@@ -251,15 +253,12 @@ namespace TShirtShop.Data.Migrations
 
                     b.Property<string>("ShippingAddress");
 
-                    b.Property<string>("ShoppingCartId");
-
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("ShoppingCartId");
 
                     b.HasIndex("UserId");
 
@@ -271,8 +270,6 @@ namespace TShirtShop.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CategoryId");
-
                     b.Property<int>("Color");
 
                     b.Property<DateTime>("CreatedOn");
@@ -281,15 +278,26 @@ namespace TShirtShop.Data.Migrations
 
                     b.Property<byte[]>("Picture");
 
-                    b.Property<decimal>("Price");
+                    b.Property<double>("Price");
 
                     b.Property<int>("Size");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("TShirtShop.Data.Models.ProductTags", b =>
+                {
+                    b.Property<string>("ProductId");
+
+                    b.Property<string>("TagId");
+
+                    b.HasKey("ProductId", "TagId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("ProductTags");
                 });
 
             modelBuilder.Entity("TShirtShop.Data.Models.Review", b =>
@@ -303,11 +311,13 @@ namespace TShirtShop.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("ProductId");
+                    b.Property<string>("ProductId")
+                        .IsRequired();
 
                     b.Property<int>("Stars");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -323,9 +333,40 @@ namespace TShirtShop.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime?>("ModifiedOn");
+
                     b.HasKey("Id");
 
                     b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("TShirtShop.Data.Models.ShoppingCartItem", b =>
+                {
+                    b.Property<string>("ItemId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime?>("ModifiedOn");
+
+                    b.Property<string>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<string>("ShoppingCartId")
+                        .IsRequired();
+
+                    b.HasKey("ItemId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("ShoppingCartId");
+
+                    b.ToTable("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("TShirtShop.Data.Models.Tag", b =>
@@ -337,13 +378,10 @@ namespace TShirtShop.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("Name");
-
-                    b.Property<string>("ProductId");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Tags");
                 });
@@ -397,14 +435,16 @@ namespace TShirtShop.Data.Migrations
                 {
                     b.HasOne("TShirtShop.Data.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TShirtShop.Data.Models.Category", b =>
                 {
                     b.HasOne("TShirtShop.Data.Models.Tag", "Tag")
                         .WithMany()
-                        .HasForeignKey("TagId");
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TShirtShop.Data.Models.Order", b =>
@@ -413,38 +453,48 @@ namespace TShirtShop.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ProductId");
 
-                    b.HasOne("TShirtShop.Data.Models.ShoppingCart", "ShoppingCart")
-                        .WithMany("Orders")
-                        .HasForeignKey("ShoppingCartId");
-
                     b.HasOne("TShirtShop.Data.Models.ApplicationUser", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TShirtShop.Data.Models.Product", b =>
+            modelBuilder.Entity("TShirtShop.Data.Models.ProductTags", b =>
                 {
-                    b.HasOne("TShirtShop.Data.Models.Category", "Category")
+                    b.HasOne("TShirtShop.Data.Models.Product", "Product")
+                        .WithMany("Tags")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TShirtShop.Data.Models.Tag", "Tag")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TShirtShop.Data.Models.Review", b =>
                 {
                     b.HasOne("TShirtShop.Data.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TShirtShop.Data.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TShirtShop.Data.Models.Tag", b =>
+            modelBuilder.Entity("TShirtShop.Data.Models.ShoppingCartItem", b =>
                 {
                     b.HasOne("TShirtShop.Data.Models.Product", "Product")
-                        .WithMany("Tags")
+                        .WithMany()
                         .HasForeignKey("ProductId");
+
+                    b.HasOne("TShirtShop.Data.Models.ShoppingCart")
+                        .WithMany("ShoppingCartItems")
+                        .HasForeignKey("ShoppingCartId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -18,6 +18,7 @@ using TShirtShop.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using TShirtShop.Data.Models;
+using TShirtShop.Services;
 
 namespace TShirtShop
 {
@@ -80,10 +81,15 @@ namespace TShirtShop
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
 
+           
             // using Microsoft.AspNetCore.Identity.UI.Services;
             services.AddSingleton<IEmailSender, EmailSender>();
             services.AddMvc();
             services.AddSession();
+            services.AddHttpContextAccessor();
+            services.AddScoped<IShopingCartService, ShopingCartService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
     
 

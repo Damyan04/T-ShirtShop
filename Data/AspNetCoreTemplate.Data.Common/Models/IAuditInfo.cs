@@ -3,7 +3,7 @@
     using System;
     public interface IAuditInfo
     {
-        DateTime CreatedOn { get; set; }
+        DateTime CreatedOn { get; }
 
         DateTime? ModifiedOn { get; set; }
     }
