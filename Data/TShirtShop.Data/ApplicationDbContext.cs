@@ -28,6 +28,8 @@ namespace TShirtShop.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ProductTags> ProductTags { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<DesignImage> DesignImages { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             // Needed for Identity models configuration

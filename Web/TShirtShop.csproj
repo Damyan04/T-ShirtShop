@@ -15,7 +15,6 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\Data\TShirtShop.Data\TShirtShop.Data.csproj" />
     <ProjectReference Include="..\Services\TShirtShop.Services\TShirtShop.Services.csproj" />
   </ItemGroup>
 

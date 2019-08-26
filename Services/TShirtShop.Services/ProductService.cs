@@ -57,7 +57,7 @@ namespace TShirtShop.Services
                 {
                     Id = product.Id,
                     Color = product.Color,
-                    Picture = product.Picture,
+                   // Picture = product.Picture,
                     Price = product.Price,
                     Size = product.Size,
                     CreatedOn = product.CreatedOn,
@@ -92,7 +92,7 @@ namespace TShirtShop.Services
             {
                 Id = data.Id,
                 Color = data.Color,
-                Picture = data.Picture,
+              //  Picture = data.Picture,
                 Price = data.Price,
                 Size = data.Size,
                 CreatedOn = data.CreatedOn,

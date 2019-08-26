@@ -19,6 +19,7 @@ namespace TShirtShop.Data.Models
         public Product()
         {
             Tags = new HashSet<ProductTags>();
+           
         }
         public string Id { get; set; }
         [Required]
@@ -28,7 +29,9 @@ namespace TShirtShop.Data.Models
         public Sizes Size { get; set; }
          [Required]
         public Colors Color { get; set; }
-        public byte[] Picture { get; set; }
+
+        public string PictureId { get; set; }
+        public Image Picture { get; set; }
         public ICollection<ProductTags> Tags{get;set;}
 
         //public string CategoryId { get; set; }

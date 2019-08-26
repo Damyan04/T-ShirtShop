@@ -236,6 +236,58 @@ namespace TShirtShop.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("TShirtShop.Data.Models.DesignImage", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ContentType");
+
+                    b.Property<byte[]>("Data");
+
+                    b.Property<int>("Height");
+
+                    b.Property<int>("Length");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("UserId");
+
+                    b.Property<int>("Width");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DesignImages");
+                });
+
+            modelBuilder.Entity("TShirtShop.Data.Models.Image", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ContentType");
+
+                    b.Property<byte[]>("Data");
+
+                    b.Property<int>("Height");
+
+                    b.Property<int>("Length");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("UserId");
+
+                    b.Property<int>("Width");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("TShirtShop.Data.Models.Order", b =>
                 {
                     b.Property<string>("Id")
@@ -276,13 +328,15 @@ namespace TShirtShop.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<byte[]>("Picture");
+                    b.Property<string>("PictureId");
 
                     b.Property<double>("Price");
 
                     b.Property<int>("Size");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PictureId");
 
                     b.ToTable("Products");
                 });
@@ -447,6 +501,20 @@ namespace TShirtShop.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("TShirtShop.Data.Models.DesignImage", b =>
+                {
+                    b.HasOne("TShirtShop.Data.Models.ApplicationUser", "User")
+                        .WithMany("DesignPictures")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("TShirtShop.Data.Models.Image", b =>
+                {
+                    b.HasOne("TShirtShop.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("TShirtShop.Data.Models.Order", b =>
                 {
                     b.HasOne("TShirtShop.Data.Models.Product", "Product")
@@ -457,6 +525,13 @@ namespace TShirtShop.Data.Migrations
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TShirtShop.Data.Models.Product", b =>
+                {
+                    b.HasOne("TShirtShop.Data.Models.Image", "Picture")
+                        .WithMany()
+                        .HasForeignKey("PictureId");
                 });
 
             modelBuilder.Entity("TShirtShop.Data.Models.ProductTags", b =>

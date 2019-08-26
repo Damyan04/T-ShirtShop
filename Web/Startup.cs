@@ -90,6 +90,7 @@ namespace TShirtShop
             services.AddScoped<IShopingCartService, ShopingCartService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IUploadFileService, UploadFileService>();
         }
     
 

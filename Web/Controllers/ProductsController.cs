@@ -2,55 +2,51 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TShirtShop.Models.TShirts;
+using TShirtShop.Services;
 
-namespace Shop_T.Controllers
+namespace TShirtShop.Controllers
 {
     public class ProductsController : Controller
     {
+        private readonly IUploadFileService __uploadFileService;
+        public ProductsController(IUploadFileService uploadFileService)
+        {
+            __uploadFileService = uploadFileService;
+
+        }
         public IActionResult Designer()
         {
-            return View();
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var imgIds = __uploadFileService.GetAllUserImg(userId);
+           
+            return View(imgIds);
         }
-        [HttpPost("UploadFiles")]
+        [AllowAnonymous]
+       [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Post(PictureViewModel picture, IFormFile image)
+        public IActionResult UploadImage(IList<IFormFile> files)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(picture);
-            }
-            if (image != null && image.Length > 0)
-            {
-                var fileName = Path.GetFileName(image.FileName);
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images\\items", fileName);
-                using (var fileSteam = new FileStream(filePath, FileMode.Create))
-                {
-                    await image.CopyToAsync(fileSteam);
-                }
-                picture.Image = fileName;
-            }
-
-           // _context.Add(item);
-           // await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Designer));
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            __uploadFileService.AddImageForUser(files, userId);
+            return RedirectToAction("Designer");
         }
-        public IActionResult Item()
+        //TODO:resize pictures
+        [HttpGet]
+        public FileStreamResult ViewImage(string id)
         {
-            //TODO: make get a tshirt from the db and render the page
-            return View();
+          return  __uploadFileService.ViewImage(id);
         }
-    }
-
    
-    // process uploaded files
-    // Don't rely on or trust the FileName property without validation.
 
 
 
 
 
+    }
 }
