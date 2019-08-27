@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using TShirtShop.Data.Common.Models;
 
@@ -11,6 +12,7 @@ namespace TShirtShop.Data.Models
         {
          ShoppingCartItems=   new HashSet<ShoppingCartItem>();
         }
+        [Key]
         public string Id { get; set; }
         public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
 

@@ -8,19 +8,13 @@ namespace TShirtShop.Data.Models
 {
     public class Product:IAuditInfo
     {
-        //      - Id (string)
-        //- Name (string)
-        //- List of Tags (List)
-        //- Price (decimal)
-        //- List of Reviews (List)
-        //- Sizes (enum)
-        //- Colours (enum)
-        //- Design picture (string)
+    
         public Product()
         {
             Tags = new HashSet<ProductTags>();
            
         }
+        [Key]
         public string Id { get; set; }
         [Required]
         [Range(0.00,double.MaxValue)]

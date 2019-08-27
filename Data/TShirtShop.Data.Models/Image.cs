@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
+using TShirtShop.Data.Common.Models;
 
 namespace TShirtShop.Data.Models
 {
-    public class Image
+    public class Image:IAuditInfo
     {
-        public Image()
-        {
-            Id = Guid.NewGuid();
-        }
-        public Guid Id { get; set; }
+        [Key]
+        public string Id { get; set; }
 
         public string Name { get; set; }
 
@@ -23,7 +22,9 @@ namespace TShirtShop.Data.Models
         public int Height { get; set; }
 
         public string ContentType { get; set; }
-       
 
+        public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
+
+        public DateTime? ModifiedOn { get; set; } = null;
     }
 }

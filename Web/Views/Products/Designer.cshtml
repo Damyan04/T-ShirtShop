@@ -16,75 +16,43 @@
                 <div class="tabbable">
                     <!-- Only required for left/right tabs -->
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1" data-toggle="tab">T-Shirt Options</a></li>
-                        <li><a href="#tab2" data-toggle="tab">Gravatar</a></li>
+                        <li class="active"><a href="#tab2" data-toggle="tab">Upload Picture and text</a></li>
+
                     </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab1">
-                            <div class="well">
-                                <!--					      	<h3>Tee Styles</h3>-->
-                                <!--						      <p>-->
-                                <select id="tshirttype">
-                                    <option value="../img/crew_front.png" selected="selected">Short Sleeve Shirts</option>
-                                    <option value="../img/mens_longsleeve_front.png">Long Sleeve Shirts</option>
-                                    <option value="../img/mens_hoodie_front.png">Hoodies</option>
-                                    <option value="../img/mens_tank_front.png">Tank tops</option>
-                                </select>
-                                <!--						      </p>-->
+                    <div class="tab-pane" id="tab2">
+                        <div class="well">
+                            <div class="input-append">
+                                <input class="span2" id="text-string" type="text" placeholder="add text here..."><button id="add-text" class="btn" title="Add text"><i class="icon-share-alt"></i></button>
+                                <hr>
                             </div>
-                            <div class="well">
-                                <ul class="nav">
-                                    <li class="color-preview" title="White" style="background-color:#ffffff;"></li>
-                                    <li class="color-preview" title="Dark Heather" style="background-color:#616161;"></li>
-                                    <li class="color-preview" title="Gray" style="background-color:#f0f0f0;"></li>
-                                    <li class="color-preview" title="Charcoal" style="background-color:#5b5b5b;"></li>
-                                    <li class="color-preview" title="Black" style="background-color:#222222;"></li>
-                                    <li class="color-preview" title="Heather Orange" style="background-color:#fc8d74;"></li>
-                                    <li class="color-preview" title="Heather Dark Chocolate" style="background-color:#432d26;"></li>
-                                    <li class="color-preview" title="Salmon" style="background-color:#eead91;"></li>
-                                    <li class="color-preview" title="Chesnut" style="background-color:#806355;"></li>
-                                    <li class="color-preview" title="Dark Chocolate" style="background-color:#382d21;"></li>
-                                    <li class="color-preview" title="Citrus Yellow" style="background-color:#faef93;"></li>
-                                    <li class="color-preview" title="Avocado" style="background-color:#aeba5e;"></li>
-                                    <li class="color-preview" title="Kiwi" style="background-color:#8aa140;"></li>
-                                    <li class="color-preview" title="Irish Green" style="background-color:#1f6522;"></li>
-                                    <li class="color-preview" title="Scrub Green" style="background-color:#13afa2;"></li>
-                                    <li class="color-preview" title="Teal Ice" style="background-color:#b8d5d7;"></li>
-                                    <li class="color-preview" title="Heather Sapphire" style="background-color:#15aeda;"></li>
-                                    <li class="color-preview" title="Sky" style="background-color:#a5def8;"></li>
-                                    <li class="color-preview" title="Antique Sapphire" style="background-color:#0f77c0;"></li>
-                                    <li class="color-preview" title="Heather Navy" style="background-color:#3469b7;"></li>
-                                    <li class="color-preview" title="Cherry Red" style="background-color:#c50404;"></li>
-                                </ul>
+                            <div> <h4>Your last 3 pictures</h4></div>
+
+                            <div id="avatarlist">
+
+                                @foreach (var item in Model)
+                                {
+                                    <img img style="cursor:pointer;" class="img-polaroid" src="/Products/ViewImage/@item" />
+                                }
                             </div>
-                        </div>
-                        <div class="tab-pane" id="tab2">
-                            <div class="well">
-                                <div class="input-append">
-                                    <input class="span2" id="text-string" type="text" placeholder="add text here..."><button id="add-text" class="btn" title="Add text"><i class="icon-share-alt"></i></button>
-                                    <hr>
-                                </div>
-                                <div id="avatarlist">
-                                    @foreach (var item in Model)
-                                    {
-                                        <img img style="cursor:pointer;" class="img-polaroid" src="/Products/ViewImage/@item" />
-                                    }
-                                </div>
-                                <div>
-                                    <hr>
-                                    <form method="post" enctype="multipart/form-data" asp-controller="Products" asp-action="UploadImage">
+                            <div>
+                                <hr>
+                                <form method="post" enctype="multipart/form-data" asp-controller="Products" asp-action="UploadImage">
+                                    <div class="custom-file">
                                         <input type="file" name="files" id="fileToUpload" multiple>
-                                        <input class="btn btn-primary" type="submit" value="Upload Custom Image" name="submit">
-                                    </form>
+                                        <div id="file-upload-filename"></div>
+                                    </div>
 
-                                </div>
+                                    <input class="btn btn-primary" type="submit" value="Upload Custom Image" name="submit">
+                                </form>
 
                             </div>
-                        </div>
 
+                        </div>
                     </div>
+
                 </div>
             </div>
+
             <div class="span6">
                 <div align="center" style="min-height: 32px;">
                     <div class="clearfix">
@@ -117,8 +85,8 @@
                         <div class="pull-right" align="" id="imageeditor" style="display:none">
                             <div class="btn-group">
                                 @*<button class="btn" id="bring-to-front" title="Bring to Front"><i class="icon-fast-backward rotate" style="height:19px;"></i></button>
-                                    <button class="btn" id="send-to-back" title="Send to Back"><i class="icon-fast-forward rotate" style="height:19px;"></i></button>
-                                    <button id="flip" type="button" class="btn" title="Show Back View"><i class="icon-retweet" style="height:19px;"></i></button>*@
+                            <button class="btn" id="send-to-back" title="Send to Back"><i class="icon-fast-forward rotate" style="height:19px;"></i></button>
+                            <button id="flip" type="button" class="btn" title="Show Back View"><i class="icon-retweet" style="height:19px;"></i></button>*@
                                 <button id="remove-selected" class="btn" title="Delete selected item"><i class="icon-trash" style="height:19px;"></i></button>
                                 <button id="save-selected" class="btn" title="Save selected item"><i class="icon-save" style="height:19px;"></i></button>
                                 <button id="clear-selected" class="btn" title="Clear selected item"><i class="icon-remove" style="height:19px;"></i></button>
@@ -174,7 +142,54 @@
                 </div>
             </div>
 
+            @* <div class="well">
+            <!--					      	<h3>Tee Styles</h3>-->
+            <!--						      <p>-->
+            @*<select id="tshirttype">
+            <option value="../img/crew_front.png" selected="selected">Short Sleeve Shirts</option>
+            <option value="../img/mens_longsleeve_front.png">Long Sleeve Shirts</option>
+            <option value="../img/mens_hoodie_front.png">Hoodies</option>
+            <option value="../img/mens_tank_front.png">Tank tops</option>
+        </select>
+            <!--						      </p>-->
+        </div>
+            *@
+            <div class="span3">
+                <div class="tab-pane" id="tab1">
+                    <div class="well">
+                        <ul class="nav">
+                            <li class="color-preview" title="White" style="background-color:#ffffff;"></li>
+                            <li class="color-preview" title="Dark Heather" style="background-color:#616161;"></li>
+                            <li class="color-preview" title="Gray" style="background-color:#f0f0f0;"></li>
+                            <li class="color-preview" title="Charcoal" style="background-color:#5b5b5b;"></li>
+                            <li class="color-preview" title="Black" style="background-color:#000000;"></li>
+                            <li class="color-preview" title="Heather Orange" style="background-color:#fc8d74;"></li>
+                            <li class="color-preview" title="Heather Dark Chocolate" style="background-color:#432d26;"></li>
+                            <li class="color-preview" title="Salmon" style="background-color:#eead91;"></li>
+                            <li class="color-preview" title="Chesnut" style="background-color:#806355;"></li>
+                            <li class="color-preview" title="Dark Chocolate" style="background-color:#382d21;"></li>
+                            <li class="color-preview" title="Citrus Yellow" style="background-color:#faef93;"></li>
+                            <li class="color-preview" title="Avocado" style="background-color:#aeba5e;"></li>
+                            <li class="color-preview" title="Kiwi" style="background-color:#8aa140;"></li>
+                            <li class="color-preview" title="Irish Green" style="background-color:#1f6522;"></li>
+                            <li class="color-preview" title="Scrub Green" style="background-color:#13afa2;"></li>
+                            <li class="color-preview" title="Teal Ice" style="background-color:#b8d5d7;"></li>
+                            <li class="color-preview" title="Heather Sapphire" style="background-color:#15aeda;"></li>
+                            <li class="color-preview" title="Sky" style="background-color:#a5def8;"></li>
+                            <li class="color-preview" title="Antique Sapphire" style="background-color:#0f77c0;"></li>
+                            <li class="color-preview" title="Heather Navy" style="background-color:#3469b7;"></li>
+                            <li class="color-preview" title="Cherry Red" style="background-color:#c50404;"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
-    </section>
-</div><!-- /container -->
+        </section>
+   
+    </div>
+           
+
+
+
+

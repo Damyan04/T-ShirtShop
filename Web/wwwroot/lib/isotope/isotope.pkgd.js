@@ -2482,7 +2482,7 @@ return Item;
     }
 
     Mode.prototype = Object.create( proto );
-    Mode.prototype.constructor = Mode;
+    Mode.prototype.constructor = 
 
     // default options
     if ( options ) {

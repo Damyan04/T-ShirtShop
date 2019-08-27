@@ -97,18 +97,23 @@ var line4;
 	        var opacity = (function(min, max){ return Math.random() * (max - min) + min; })(0.5, 1);
 	        
 	  		fabric.Image.fromURL(el.src, function(image) {
-		          image.set({
-		            left: left,
-		            top: top,
-		            angle: 0,
-		            padding: 15,
-		            cornersize: 15,
-	      	  		hasRotatingPoint:true
-		          });
-		          //image.scale(getRandomNum(0.1, 0.25)).setCoords();
-		          canvas.add(image);
+                    image.set({
+                        left: left,
+                        top: top,
+                        angle: 0,
+                        width: 100,
+                        height:100,
+                        padding: 15,
+                        cornersize: 15,
+                        hasRotatingPoint: true,
+                    }).scale(0.2)
+                    canvas.add(image);
+                  });
+		         // image.scale(0.1).setCoords();
+                  
+		         
 		        });
-	  	});	  		  
+	    		  
 	  document.getElementById('remove-selected').onclick = function() {		  
 		    var activeObject = canvas.getActiveObject(),
 		        activeGroup = canvas.getActiveGroup();

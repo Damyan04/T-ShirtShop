@@ -10,19 +10,14 @@ namespace TShirtShop.Data.Models
 {
    public class Order:IAuditInfo
     {
-        //       - Id(string)
-        //- IssuedOn(dateTime)
-        //- Quantity(int)
-        //- Product(Product)
-        //- Isuser(User)
-        //- Shipping address(string)
-        //- Payment option(enum)
+    
         [Required]
         [Key]
         public string Id { get ; set ; }
         [Required]
         [Range(0,int.MaxValue)]
         public int Quantity { get; set; } //range 0-max
+        public string ProductId { get; set; }
         public Product Product{get;set;}
         [Required]
         public string UserId { get; set; }

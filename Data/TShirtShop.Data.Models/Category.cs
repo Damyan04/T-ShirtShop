@@ -8,20 +8,14 @@ namespace TShirtShop.Data.Models
 {
     public class Category : IAuditInfo
     {
-        //      - Id(string)
-        //- Name(string)
-        //- List of Products(List)
-        public Category()
-        {
-            //Products = new HashSet<Product>();
-        }
+     
+     
         [Key]
         [Required]
         public string Id { get ; set; }
         [Required]
         public string Name { get; set; }
 
-        //public IEnumerable<Product> Products { get; set; }
         [Required]
         public string TagId { get; set; }
         public Tag Tag { get; set; }

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#flipback1').click(
+    $('#flipback').click(
         function () {
 
             if ($(this).attr("data-original-title") == "Show Back View") {
@@ -26,6 +26,11 @@ $(document).ready(function () {
                 }
                 catch (e) { }
             }
+            onSelectedCleared();
+            canvas.renderAll();
+            setTimeout(function () {
+                canvas.calcOffset();
+            }, 200);
         });
         
             
@@ -49,7 +54,7 @@ $('#save-selected').click(
         onSelectedCleared();
         canvas.deactivateAll().renderAll();
     });
-$('#flipback').click(
+$('#flipback1').click(
     function () {
         if (valueSelect === "../img/crew_front.png") {
             if ($(this).attr("data-original-title") == "Show Back View") {

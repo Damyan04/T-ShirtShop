@@ -34,6 +34,7 @@ namespace TShirtShop.Controllers
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             __uploadFileService.AddImageForUser(files, userId);
+            
             return RedirectToAction("Designer");
         }
         //TODO:resize pictures
