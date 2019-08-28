@@ -5,18 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shop_T.Models;
 using TShirtShop.Models;
+using TShirtShop.Models.TShirts;
+using TShirtShop.Services;
 
 namespace TShirtShop.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IProductService __productService;
+        public HomeController(IProductService productService)
+        {
+            __productService = productService;
+        }
         [AllowAnonymous]
         public IActionResult Index()
         {
-            var tshirts = new TShirtsViewModel();
-            return View(tshirts);
+            var products = __productService.NewestProducts();
+            
+            return View(products);
         }
         [AllowAnonymous]
         public IActionResult Privacy()
@@ -28,6 +35,11 @@ namespace TShirtShop.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        [HttpGet]
+        public FileStreamResult ViewProduct(string id)
+        {
+           return __productService.ViewProduct(id);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TShirtShop.Data.Common.Models;
@@ -12,5 +13,6 @@ namespace TShirtShop.Services
         IEnumerable<IAuditInfo> Products();
         IAuditInfo GetProductById(string productId);
         IEnumerable<IAuditInfo> NewestProducts();
+        FileStreamResult ViewProduct(string imageId);
     }
 }

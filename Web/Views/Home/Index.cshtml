@@ -1,117 +1,86 @@
-﻿@model Shop_T.Models.TShirtsViewModel
+﻿@using TShirtShop.Services.Data;
+@model ICollection<ProductDto>;
 @{
-    
+
 }
-    <div id="container">
-        <div id="header-wrapper" class="header-slider">
-            <header class="clearfix">
-                <div class="row ">
-                    <div class="col">
-                        <div class="logo">
-                            <img src="img/logo-image.png" alt="" />
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="span12">
-                                    <div id="main-flexslider" class="flexslider">
-                                        <ul class="slides">
-                                            <li>
-                                                <p class="home-slide-content">
-                                                 Be <strong>creative</strong>
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <p class="home-slide-content">
-                                                    <strong> Register </strong> now
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <p class="home-slide-content">
-                                                    create your own <strong>Design</strong> 
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- end slider -->
+<div id="container">
+    <div id="header-wrapper" class="header-slider">
+        <header class="clearfix">
+            <div class="row ">
+                <div class="col">
+                    <div class="logo">
+                        <img src="img/logo-image.png" alt="" />
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="span12">
+                                <div id="main-flexslider" class="flexslider">
+                                    <ul class="slides">
+                                        <li>
+                                            <p class="home-slide-content">
+                                                Be <strong>creative</strong>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="home-slide-content">
+                                                <strong> Register </strong> now
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="home-slide-content">
+                                                create your own <strong>Design</strong>
+                                            </p>
+                                        </li>
+                                    </ul>
                                 </div>
+                                <!-- end slider -->
                             </div>
                         </div>
                     </div>
                 </div>
-</header>
-        </div>
-        <section id="works" class="section">
-          
-            <div class="container">
-                <div class="row justify-content-center mb-3 pb-3">
-          <div class="col-md-12 heading-section text-center">
-          	<h1 class="big">Trending</h1>
-            <h2 class="mb-4">Trending</h2>
-          </div>
+            </div>
+        </header>
+    </div>
+    <section id="works" class="section">
+
+        <div class="container">
+            <div class="row justify-content-center mb-3 pb-3">
+                <div class="col-md-12 heading-section text-center">
+                    <h1 class="big">Trending</h1>
+                    <h2 class="mb-4">Trending</h2>
                 </div>
-                    <!-- spacer section -->
-                <div class="row ">
-                    <div id="product-item-wrap">
-                        <!-- product-item item -->
-                        <!-- product-item item -->
+            </div>
+            <!-- spacer section -->
+            <div class="row ">
+                <div id="product-item-wrap">
+                    <!-- product-item item -->
+                    <!-- product-item item -->
+
+                    @foreach (var item in Model)
+                    {
                         <div class="col-sm-6 col-md-4 col-lg-3">
 
                             <div class="hovereffect">
-                                <img class="img-fluid" src="~/img/tshirts/Got2.jpg" alt="">
+                                <img class="img-fluid" src="/Home/ViewImage/@item.PictureId" alt="">
                                 <div class="overlay">
-                                    <h2>@Model.Name</h2>
+                                    <h2>item.Name</h2>
                                     <a class="info" asp-controller="Products" asp-action="Item">Click me for more info!</a>
                                 </div>
                             </div>
 
                         </div>
+                       
+                    }
 
 
 
-                        <!-- product-item item -->
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-
-                            <div class="hovereffect">
-                                <img class="img-fluid" src="~/img/tshirts/Got2.jpg" alt="">
-                                <div class="overlay">
-                                    <h2>@Model.Name</h2>
-                                    <a class="info" asp-controller="Products" asp-action="Item">link here</a>
-                                </div>
-                            </div>
-
-                        </div>
 
 
-
-                        <!-- product-item item -->
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-
-                            <div class="hovereffect">
-                                <img class="img-fluid" src="~/img/tshirts/Got2.jpg" alt="">
-                                <div class="overlay">
-                                    <h2>@Model.Name</h2>
-                                    <a class="info" href="#">link here</a>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="hovereffect">
-                                <img class="img-fluid" src="~/img/tshirts/Got2.jpg" alt="">
-                                <div class="overlay">
-                                    <h2>@Model.Name</h2>
-                                    <a class="info" href="#">link here</a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
+                
                 </div>
-            </div>
+        </div>
+</div>
         </section>
-            <div class="push"></div>
+<div class="push"></div>
     </div>
 <!-- end spacer section -->

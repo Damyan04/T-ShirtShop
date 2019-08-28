@@ -18,7 +18,8 @@ namespace TShirtShop.Services.Data
         public Sizes Size { get; set; }
         [Required]
         public Colors Color { get; set; }
-        public byte[] Picture { get; set; }
+        public string PictureId { get; set; }
+        public ImageDto Picture { get; set; }
         public ICollection<TagDto> Tags { get; set; }
 
         //public string CategoryId { get; set; }

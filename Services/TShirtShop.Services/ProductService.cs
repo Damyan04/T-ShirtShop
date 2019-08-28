@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using TShirtShop.Data;
@@ -46,6 +48,14 @@ namespace TShirtShop.Services
 
 
         }
+        public FileStreamResult ViewProduct(string imageId)
+        {
+            var image = _appDbContext.Images.FirstOrDefault(m => m.Id == imageId);
+
+            MemoryStream ms = new MemoryStream(image.Data);
+
+            return new FileStreamResult(ms, image.ContentType);
+        }
 
         private IEnumerable<ProductDto> MapCollectionProducts(ICollection<Product> data)
         {
@@ -57,7 +67,7 @@ namespace TShirtShop.Services
                 {
                     Id = product.Id,
                     Color = product.Color,
-                   // Picture = product.Picture,
+                 PictureId=product.PictureId,
                     Price = product.Price,
                     Size = product.Size,
                     CreatedOn = product.CreatedOn,
@@ -84,8 +94,9 @@ namespace TShirtShop.Services
                 }
                 productDtos.Add(productDto);
             }
-            return productDtos as IEnumerable<ProductDto>;
+            return productDtos as ICollection<ProductDto>;
         }
+       
         private IAuditInfo MapProduct(Product data)
         {
             var productDto = new ProductDto()
@@ -120,5 +131,6 @@ namespace TShirtShop.Services
             }
             return productDto;
         }
+        
     }
 }

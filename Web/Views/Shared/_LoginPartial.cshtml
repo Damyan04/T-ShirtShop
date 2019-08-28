@@ -5,7 +5,7 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <li><a title="designer" asp-controller="Products" asp-action="Designer">Designer</a></li>
+    <li><a title="designer" asp-controller="Designer" asp-action="Designer">Designer</a></li>
     <li>
         <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Welcome @User.Identity.Name !</a>
     </li>

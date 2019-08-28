@@ -25,18 +25,22 @@
                                 <input class="span2" id="text-string" type="text" placeholder="add text here..."><button id="add-text" class="btn" title="Add text"><i class="icon-share-alt"></i></button>
                                 <hr>
                             </div>
-                            <div> <h4>Your last 3 pictures</h4></div>
+                            @if (Model.Any())
+                            {
+                                <div> <h4>Your last 3 pictures</h4></div>
+                            }
+
 
                             <div id="avatarlist">
 
                                 @foreach (var item in Model)
                                 {
-                                    <img img style="cursor:pointer;" class="img-polaroid" src="/Products/ViewImage/@item" />
+                                    <img img style="cursor:pointer;" class="img-polaroid" src="Designer/ViewImage/@item" />
                                 }
                             </div>
                             <div>
                                 <hr>
-                                <form method="post" enctype="multipart/form-data" asp-controller="Products" asp-action="UploadImage">
+                                <form method="post" enctype="multipart/form-data" asp-controller="Designer" asp-action="UploadImage">
                                     <div class="custom-file">
                                         <input type="file" name="files" id="fileToUpload" multiple>
                                         <div id="file-upload-filename"></div>
