@@ -12,6 +12,7 @@ using TShirtShop.Services.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using TShirtShop.Data.Models.Enums;
 
 namespace TShirtShop.Services
 {
@@ -79,7 +80,11 @@ namespace TShirtShop.Services
 
             }
         }
-
+        public ICollection<string> GetAllSizes()
+        {
+            string[] names = Enum.GetNames(typeof(Sizes));
+            return names;
+        }
         public FileStreamResult ViewImage(string imageId)
         {
             DesignImage image = _appDbContext.DesignImages.FirstOrDefault(m => m.Id == imageId);

@@ -15,13 +15,13 @@ namespace TShirtShop.Data.Models
         [Key]
         public string ItemId { get; set; }
 
-        [Required]
+       
         public string ShoppingCartId { get; set; }
-
+        public ShoppingCart ShoppingCart { get; set; }
         [Range(0,int.MaxValue)]
         public int Quantity { get; set; }
 
-        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+        
 
         public string ProductId { get; set; }
 

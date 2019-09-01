@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TShirtShop.Models;
-using TShirtShop.Models.TShirts;
+
+using Microsoft.AspNetCore.Http;
 using TShirtShop.Services;
+using TShirtShop.Models;
 
 namespace TShirtShop.Controllers
 {
@@ -36,10 +37,13 @@ namespace TShirtShop.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [AllowAnonymous]
         [HttpGet]
         public FileStreamResult ViewProduct(string id)
         {
            return __productService.ViewProduct(id);
         }
+
+        
     }
 }

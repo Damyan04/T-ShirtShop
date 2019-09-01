@@ -11,16 +11,18 @@ namespace TShirtShop.Services.Data
     {
      
         public string Id { get; set; }
-        [Required]
-        [Range(0.00, double.MaxValue)]
+        public string Name { get; set; }
+       
         public double Price { get; set; }
-        [Required]
+      
         public Sizes Size { get; set; }
-        [Required]
-        public Colors Color { get; set; }
+        public string Class { get; set; }
+        public ICollection<string> ColorsList { get; set; }
+        public ICollection<string> SizeList { get; set; }
         public string PictureId { get; set; }
         public ImageDto Picture { get; set; }
         public ICollection<TagDto> Tags { get; set; }
+        public ICollection<ReviewDto> Reviews { get; set; }
 
         //public string CategoryId { get; set; }
         //public Category Category{ get; set; }

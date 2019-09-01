@@ -2,6 +2,7 @@
 @model IList<string>;
 @{
     ViewData["Title"] = "Designer";
+    IEnumerable<string> sizes = ViewData["Sizes"] as IEnumerable<string>;
 }
 <div class="container">
     <section id="typography">
@@ -27,7 +28,7 @@
                             </div>
                             @if (Model.Any())
                             {
-                                <div> <h4>Your last 3 pictures</h4></div>
+                                <div> <h4>Last 3 used pictures</h4></div>
                             }
 
 
@@ -118,31 +119,37 @@
             <div class="span3">
                 <div class="well">
                     <h3>Select Sizes</h3>
-                    <p>
-                        <table class="table">
-                            <tr>
-                                <td><input type="checkbox">&emsp;S</td>
-                                <td align="right"><input min="0" style="width: 40px;" value="1" type="number"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox">&emsp;M</td>
-                                <td align="right"><input min="0" style="width: 40px;" placeholder="1" type="number"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox">&emsp;L</td>
-                                <td align="right"><input min="0" style="width: 40px;" placeholder="1" type="number"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox">&emsp;XL</td>
-                                <td align="right"><input min="0" style="width: 40px;" placeholder="1" type="number"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox">&emsp;XXL</td>
-                                <td align="right"><input min="0" style="width: 40px;" placeholder="1" type="number"></td>
-                            </tr>
-                        </table>
-                    </p>
-                    <button type="button" class="btn btn-large btn-block btn-success" name="addToTheBag" id="addToTheBag">Add to bag <i class="icon-briefcase icon-white"></i></button>
+
+                    <span class="custom-dropdown big">
+                        <select>
+
+                            @foreach (var item in sizes)
+                            {
+                                <option>@item</option>
+
+                            }
+
+
+                        </select>
+
+                    </span>
+                    <div>
+                        <span class="price-box">
+                            Count:
+                        </span>
+
+                        <span>
+                            <input min="0" style="width: 40px;" value="1" type="number" />
+                        </span>
+                    </div>
+                    <div>
+                        <span class="price-box">Price:</span>
+                        <span class="price-box" id="price">
+                           30<span class="precision">,00</span>&nbsp;<span class="currency">$</span>
+                        </span>
+                    </div>
+                    
+                    <button type="button" class="btn btn-large btn-block btn-success" name="addToTheBag" id="addToTheBag">Add to cart <i class="icon-shopping-cart icon-white"></i></button>
                 </div>
             </div>
 

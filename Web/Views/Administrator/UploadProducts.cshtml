@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "UploadProducts";
+}
+
+<h1>UploadProducts</h1>
+<div id="container">
+    <section id="works" class="section">
+        <div class="container clearfix">
+            <div class="row ">
+                <form method="post" enctype="multipart/form-data" asp-controller="Administrator" asp-action="UploadImageWithProduct">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" class="form-control" id="nameInput" aria-describedby="name" placeholder="Name" name="name">
+                      
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Colors</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Colors" name="colors">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Price</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Price" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Tags</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tags" name="tags">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Sizes</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Sizes" name="sizes">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">ClassName</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="className" name="className">
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" name="files" id="fileToUpload" multiple>
+                        <div id="file-upload-filename"></div>
+                    </div>
+
+
+                    <input class="btn btn-primary" type="submit" value="Upload Custom Image" name="submit">
+
+                </form>
+            
+            </div>
+        </div>
+      
+      
+
+
+    </section>
+</div>

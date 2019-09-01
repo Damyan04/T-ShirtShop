@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using TShirtShop.Data.Common.Models;
+using TShirtShop.Services;
 
 namespace TShirtShop.Services.Data
 {
-    public class ShopingCartDto : IAuditInfo
+    public class ShopingCartDto 
     {
-        public string ShopingCartId { get; set; }
-      
-      
-        public ICollection<ShopingCartItemDto> ShoppingCartItems { get; set; }
-
-        public DateTime CreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
+     
     }
 }

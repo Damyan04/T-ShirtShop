@@ -14,8 +14,8 @@ namespace TShirtShop.Data.Models
         [Key]
         public string Id { get; set ; }
         [Required]
-        [Range(0, 5)]
-        public int Stars { get; set; } = 0;
+        [Range(0.00, 5.00)]
+        public double Stars { get; set; } = 0;
         public string Comment { get; set; } = null;
         [Required]
         public string ProductId { get; set; }

@@ -9,11 +9,12 @@ namespace TShirtShop.Services
 {
   public interface IShopingCartService
     {
-        IAuditInfo GetCart(IServiceProvider services);
-        void AddToCart(string productId, int quantity, string cartId);
-       int RemoveFromCart(string productId, string cartId);
-       IEnumerable<IAuditInfo> GetShoppingCartItems(string cartId);
-        void ClearCart(string cartId);
-        decimal GetShopingCartTotal(string cartId);
+        string Id { get; set; }
+        IEnumerable<ShoppingCartItem> ShoppingCartItems { get; set; }
+        void AddToCart(string productId, int quantity);
+       int RemoveFromCart(string productId);
+        IEnumerable<ShoppingCartItem> GetShoppingCartItems();
+        void ClearCart();
+        decimal GetShopingCartTotal();
     }
 }

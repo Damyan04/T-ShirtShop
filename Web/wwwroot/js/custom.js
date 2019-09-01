@@ -127,8 +127,31 @@ jQuery(document).ready(function($) {
 	$('#filters a').click(function(){
 		$('#filters a').removeClass('active');
 		$(this).addClass('active');
-		var selector = $(this).attr('data-filter');
-		$container.isotope({ filter: selector });
+        var selector = $(this).attr('data-filter');
+        
+        selector = selector.toLowerCase();
+        selector = selector.split(" ");
+      
+     
+        if (selector.length > 1) {
+            var selectors = ""
+            for (var i = 0; i <= selector.length-1; i++) {
+                if (i > 0) {
+                    selectors += '-' + selector[i];
+                } else {
+                    selectors += selector[i];
+                }
+            }
+          
+            $container.isotope({ filter: selectors });
+        } else {
+           
+            $container.isotope({ filter: selector[0] });
+        }
+      
+      //  selector = filterFns[selector] || selector;
+
+		
 		return false;
 	});
 
@@ -145,7 +168,8 @@ jQuery(document).ready(function($) {
 		controlNav: false,
 		smootheHeight:true,						
 		useCSS: false
-	});
+    });
+   
 });
    
 	

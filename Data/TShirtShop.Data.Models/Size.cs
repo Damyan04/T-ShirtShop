@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
+using TShirtShop.Data.Models.Enums;
 
 namespace TShirtShop.Data.Models
 {
-   public class ProductTags
+   public class Size
     {
+        [Key]
+        public string Id { get; set; }
+        public Sizes SizeName { get; set; }
+
         public string ProductId { get; set; }
         public Product Product { get; set; }
-        public string TagId { get; set; }
-        public Tag Tag { get; set; }
     }
 }

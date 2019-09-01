@@ -15,34 +15,42 @@ namespace TShirtShop.Services
     public class ShopingCartService:IShopingCartService
     {
         private readonly ApplicationDbContext _appDbContext;
+        public string Id { get; set; }
+        public IEnumerable<ShoppingCartItem> ShoppingCartItems { get; set; }
         public ShopingCartService(ApplicationDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
-        public IAuditInfo GetCart(IServiceProvider services)
+        public static ShopingCartService GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?
                 .HttpContext.Session;
-            //var context = services.GetService<ApplicationDbContext>();
+            var context = services.GetRequiredService<ApplicationDbContext>();
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
             session.SetString("CartId", cartId);
-            return new ShopingCartDto() { ShopingCartId=cartId};
+            return new ShopingCartService(context)
+            {
+                Id= cartId
+            };
             //TODO in the Controller to make a viewmodel
         }
       
-        public void AddToCart(string productId,int quantity,string cartId)
+        public void AddToCart(string productId,int quantity)
         {
-            var shopingCart = GetShoppingCartById(cartId);
+           
             var shoppingCartItem = _appDbContext.ShoppingCartItems.SingleOrDefault(
-s=>s.ProductId==productId&&s.ShoppingCartId==shopingCart.Id
+s=>s.ProductId==productId&&s.ShoppingCartId==Id
                 );
             if (shoppingCartItem == null)
             {
-              shoppingCartItem = new ShoppingCartItem
+                shoppingCartItem = new ShoppingCartItem
                 {
-                    ShoppingCartId = shopingCart.Id,
+                    ItemId = Guid.NewGuid().ToString(),
+                    ShoppingCartId = Id,
                     Product = GetProductById(productId),
                     Quantity = 1,
+                    ProductId=productId
+                    
 
                 };
                 _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
@@ -54,12 +62,12 @@ s=>s.ProductId==productId&&s.ShoppingCartId==shopingCart.Id
             }
             _appDbContext.SaveChanges();
         }
-        public int RemoveFromCart(string productId,string cartId)
+        public int RemoveFromCart(string productId)
         {
-            var shopingCart = GetShoppingCartById(cartId);
+           
             var product = GetProductById(productId);
             var shoppingCartItem = _appDbContext.ShoppingCartItems.SingleOrDefault(
-s => s.ProductId == product.Id && s.ShoppingCartId == shopingCart.Id);
+s => s.ProductId == product.Id && s.ShoppingCartId == Id);
             var localAmount = 0;
             if (shoppingCartItem != null)
             {
@@ -76,24 +84,24 @@ s => s.ProductId == product.Id && s.ShoppingCartId == shopingCart.Id);
             _appDbContext.SaveChanges();
             return localAmount;
         }
-        public IEnumerable<IAuditInfo> GetShoppingCartItems(string cartId)
+        public IEnumerable<ShoppingCartItem> GetShoppingCartItems()
         {
-            var shopingCart = GetShoppingCartById(cartId);
-            IEnumerable<IAuditInfo> data= _appDbContext.ShoppingCartItems.Where(s => s.ShoppingCartId == shopingCart.Id).Include(w => w.Product).ToList();
+          
+            IEnumerable<ShoppingCartItem> data= _appDbContext.ShoppingCartItems.Where(s => s.ShoppingCartId == Id).Include(w => w.Product).ToList();
             return data;
             //TODO:return DTO;
         }
-        public void ClearCart(string cartId)
+        public void ClearCart()
         {
-            var shopingCart = GetShoppingCartById(cartId);
-            var cartItems = _appDbContext.ShoppingCartItems.Where(cart => cart.ShoppingCartId == cartId);
+          
+            var cartItems = _appDbContext.ShoppingCartItems.Where(cart => cart.ShoppingCartId == Id);
             _appDbContext.ShoppingCartItems.RemoveRange(cartItems);
             _appDbContext.SaveChanges();
         }
-        public decimal GetShopingCartTotal(string cartId)
+        public decimal GetShopingCartTotal()
         {
-            var shopingCart = GetShoppingCartById(cartId);
-            decimal total = (decimal)_appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == shopingCart.Id)
+           
+            decimal total = (decimal)_appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == Id)
                 .Select(c=>c.Product.Price*c.Quantity).Sum();
             return total;
         }

@@ -12,6 +12,6 @@ namespace TShirtShop.Services
        List<string> GetAllUserImg(string userId);
 
         FileStreamResult ViewImage(string imageId);
-
+        ICollection<string> GetAllSizes();
     }
 }

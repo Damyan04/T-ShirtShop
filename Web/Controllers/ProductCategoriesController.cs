@@ -4,17 +4,31 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shop_T.Models;
+using TShirtShop.Services;
 
-namespace Shop_T.Controllers
+namespace TShirtShop.Controllers
 {
     public class ProductCategoriesController : Controller
     {
+        private readonly IProductService __productService;
+        public ProductCategoriesController(IProductService productService)
+        {
+            __productService = productService;
+        }
         [AllowAnonymous]
+        [HttpGet]
         public IActionResult TShirts()
         {
-            var categories = new CategoriesViewModel();
-            return View(categories);
+            ViewData["ProductDto"] = __productService.Products();
+            ViewData["TagDto"] = __productService.GetTags();
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public FileStreamResult ViewProductCategory(string id)
+        {
+            return __productService.ViewProduct(id);
         }
     }
 }

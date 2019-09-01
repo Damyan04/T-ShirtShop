@@ -20,11 +20,12 @@ namespace TShirtShop.Controllers
             __uploadFileService = uploadFileService;
 
         }
-        [HttpGet("Products/")]
+        [HttpGet("Designer/")]
         public IActionResult Designer()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var imgIds = __uploadFileService.GetAllUserImg(userId);
+            ViewData["Sizes"] =  __uploadFileService.GetAllSizes();
            
             return View(imgIds);
         }
@@ -38,7 +39,7 @@ namespace TShirtShop.Controllers
             
             return RedirectToAction("Designer");
         }
-        //TODO:resize pictures
+       
         [HttpGet]
         public FileStreamResult ViewImage(string id)
         {

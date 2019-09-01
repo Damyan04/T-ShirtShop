@@ -25,9 +25,11 @@ namespace TShirtShop.Data
 
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<Size> Sizes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-        public DbSet<ProductTags> ProductTags { get; set; }
+       
         public DbSet<Image> Images { get; set; }
         public DbSet<DesignImage> DesignImages { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
@@ -35,16 +37,7 @@ namespace TShirtShop.Data
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 
-            builder.Entity<ProductTags>()
-       .HasKey(bc => new { bc.ProductId, bc.TagId });
-            builder.Entity<ProductTags>()
-                .HasOne(bc => bc.Product)
-                .WithMany(b => b.Tags)
-                .HasForeignKey(bc => bc.ProductId);
-            builder.Entity<ProductTags>()
-                .HasOne(bc => bc.Tag)
-                .WithMany(c => c.Products)
-                .HasForeignKey(bc => bc.TagId);
+    
         }
 
     }

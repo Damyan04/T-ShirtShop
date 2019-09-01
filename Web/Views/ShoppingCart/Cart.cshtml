@@ -1,4 +1,4 @@
-﻿
+﻿@model TShirtShop.Models.ShoppingCart.ShopingCartViewModel
 @{
     ViewData["Title"] = "Cart";
 }
@@ -16,36 +16,41 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach (var item in Model.ShopingCart.ShoppingCartItems)
+                {
+
+
                 <tr>
                     <td data-th="Product">
                         <div class="row">
                             <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive" /></div>
                             <div class="col-sm-10">
-                                <h4 class="nomargin">Product 1</h4>
-                                <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                                <h4 class="nomargin">@item.Product.Name</h4>
+                              
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price">$1.99</td>
+                    <td data-th="Price">@item.Product.Price</td>
                     <td data-th="Quantity">
                         <input type="number" class="form-control text-center" value="1">
                     </td>
-                    <td data-th="Subtotal" class="text-center">1.99</td>
+                    <td data-th="Subtotal" class="text-center">@((item.Quantity*item.Product.Price).ToString("c"))</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
                         <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
                     </td>
                 </tr>
+                }
             </tbody>
             <tfoot>
                 <tr class="visible-xs">
-                    <td class="text-center"><strong>Total 1.99</strong></td>
+                    <td class="text-center"><strong>Total @Model.ShoppingCartTotal.ToString("c")</strong></td>
                 </tr>
                 <tr>
-                    <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td><a onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                     <td colspan="2" class="hidden-xs"></td>
-                    <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-                    <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                    
+                    <td><a href="#" class="btn btn-success btn-block" onclick="location.href='@Url.Action("CheckOut", "ShoppingCart")'">Checkout <i class="fa fa-angle-right"></i></a></td>
                 </tr>
             </tfoot>
         </table>

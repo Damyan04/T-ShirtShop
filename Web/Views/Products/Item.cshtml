@@ -1,56 +1,46 @@
 ﻿@using Microsoft.AspNetCore.Identity
-
+@using TShirtShop.Services.Data
+@model ProductDto
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Item";
+   
 }
 <div id="container">
     <section id="works" class="section">
         <div class="container clearfix">
-            <h4>GOT T-Shirt</h4>
+            <h4>@Model.Name</h4>
             <div class="row">
                 <div class="span3">
                     <div class="tabbable">
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab1">
                                 <div class="well">
-                                    <h3>Select Color</h3>
-                                    <ul class="nav">
-                                        <li class="color-preview" title="White" style="background-color:#ffffff;"></li>
-                                        <li class="color-preview" title="Dark Heather" style="background-color:#616161;"></li>
-                                        <li class="color-preview" title="Gray" style="background-color:#f0f0f0;"></li>
-                                        <li class="color-preview" title="Charcoal" style="background-color:#5b5b5b;"></li>
-                                        <li class="color-preview" title="Black" style="background-color:#222222;"></li>
-                                        <li class="color-preview" title="Heather Orange" style="background-color:#fc8d74;"></li>
-                                        <li class="color-preview" title="Heather Dark Chocolate" style="background-color:#432d26;"></li>
-                                        <li class="color-preview" title="Salmon" style="background-color:#eead91;"></li>
-                                        <li class="color-preview" title="Chesnut" style="background-color:#806355;"></li>
-                                        <li class="color-preview" title="Dark Chocolate" style="background-color:#382d21;"></li>
-                                        <li class="color-preview" title="Citrus Yellow" style="background-color:#faef93;"></li>
-                                        <li class="color-preview" title="Avocado" style="background-color:#aeba5e;"></li>
-                                        <li class="color-preview" title="Kiwi" style="background-color:#8aa140;"></li>
-                                        <li class="color-preview" title="Irish Green" style="background-color:#1f6522;"></li>
-                                        <li class="color-preview" title="Scrub Green" style="background-color:#13afa2;"></li>
-                                        <li class="color-preview" title="Teal Ice" style="background-color:#b8d5d7;"></li>
-                                        <li class="color-preview" title="Heather Sapphire" style="background-color:#15aeda;"></li>
-                                        <li class="color-preview" title="Sky" style="background-color:#a5def8;"></li>
-                                        <li class="color-preview" title="Antique Sapphire" style="background-color:#0f77c0;"></li>
-                                        <li class="color-preview" title="Heather Navy" style="background-color:#3469b7;"></li>
-                                        <li class="color-preview" title="Cherry Red" style="background-color:#c50404;"></li>
-                                    </ul>
+                                    <h3>Colors:</h3>
+                                    <span class="custom-dropdown big">
+                                        <select>
+
+                                            @foreach (var item in Model.ColorsList)
+                                            {
+                                                <option>@item</option>
+                                            }
+
+
+                                        </select>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button id="flipback" type="button" class="btn" title="Rotate View" data-original-title="Show Back View"><i class="icon-retweet" style="height:19px;"></i></button>
+
                 <div class="span6">
                     <div align="center" style="min-height: 32px;">
                         <div class="clearfix">
 
                             <div id="shirtDiv" class="page" style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255);">
-                                <img name="tshirtview" id="tshirtFacing" src="../img/crew_front.png">
+                                <img name="tshirtview" id="tshirtFacing" src="@Url.Action("ViewImage", "Products",Model)">
                                 <div id="drawingArea" style="position: absolute;top: 100px;left: 160px;z-index: 10;width: 200px;height: 400px;">
                                     <canvas id="tcanvas" width=200 height="400" class="hover" style="-webkit-user-select: none;"></canvas>
                                 </div>
@@ -62,62 +52,117 @@
                 <div class="span3">
                     <div class="well">
                         <h3>Select Size</h3>
-                        <p>
-                            <table class="table">
-                                <tr>
-                                    <td><input type="checkbox">&emsp;S</td>
-                                    <td align="right"><input min="0" style="width: 40px;" value="1" type="number"></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox">&emsp;M</td>
-                                    <td align="right"><input min="0" style="width: 40px;" placeholder="1" type="number"></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox">&emsp;L</td>
-                                    <td align="right"><input min="0" style="width: 40px;" placeholder="1" type="number"></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox">&emsp;XL</td>
-                                    <td align="right"><input min="0" style="width: 40px;" placeholder="1" type="number"></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox">&emsp;XXL</td>
-                                    <td align="right"><input min="0" style="width: 40px;" placeholder="1" type="number"></td>
-                                </tr>
-                            </table>
-                        </p>
-                        <div class="price-box">
+                        <span class="custom-dropdown big">
+                            <select>
 
-                            <span class="price-label">Price:</span>
-                            <span class="price" id="price">
-                                229<span class="precision">,00</span>&nbsp;<span class="currency">$</span>
+                                @foreach (var item in Model.SizeList)
+                                {
+                                    <option>@item</option>
+
+                                }
+
+
+                            </select>
+
+                        </span>
+                        <div>
+                            <span class="price-box">
+                                Count:
                             </span>
 
-
-
+                            <span>
+                                <input min="0" style="width: 40px;" value="1" type="number" />
+                            </span>
                         </div>
-                        <button type="button" class="btn btn-lg btn-success" name="addToTheBag" id="addToTheBag">Add to bag <i class="icon-briefcase icon-white"></i></button>
+                        <div>
+                            <span class="price-box">Price:</span>
+                            <span class="price-box" id="price">
+                                @Model.Price<span class="precision">,00</span>&nbsp;<span class="currency">$</span>
+                            </span>
+                        </div>
+
+                        <button type="button" onclick="location.href='@Url.Action("AddToShoppingCart", "ShoppingCart",Model)'" class="btn btn-large btn-block btn-success" name="addToTheBag" id="addToTheBag" >Add to cart <i class="icon-shopping-cart icon-white" ></i></button>
                     </div>
+                    
                 </div>
             </div>
-                <div class="card my-1">
-                    <h4 class="card-title">Product reviews</h4>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                        <hr>
-                        @if (SignInManager.IsSignedIn(User))
+
+            <div class="card my-1">
+                <h4 class="card-title">Product reviews</h4>
+                <div class="card-body">
+                    @foreach (var item in Model.Reviews)
+                    {
+
+
+                        <p>@item.Comment</p>
+                        @for (int i = 1; i <= item.Stars; i++)
                         {
-                            <a href="#" class="btn btn-success">Leave a Review</a>
+
+                            <span class="fa fa-star checked"></span>
+
                         }
-                    </div>
+                        @for (int i = 5; i > item.Stars; i--)
+                        {
+
+                            <span class="fa fa-star"></span>
+
+                        }
+
+                        <small class="text-muted">Posted by @item.UserName on @item.CreatedOn.ToString("MMMM dd, yyyy")</small>
+                        <hr>
+                    }
+
+
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            Leave a Review
+                        </button>
+                        <form method="post" enctype="multipart/form-data" asp-action="PostComment" asp-controller="Products" asp-route-id="@Model.Id">
+                            <div class="container-fluid">
+                                <div id="myModal" class="modal fade" role="dialog">
+
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Review</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <textarea id="textAnswer" name="textAnswer" rows="4" cols="50" placeholder="Your Review"></textarea>
+                                            </div>
+
+
+                                            <div class="modal-footer">
+                                                <fieldset class="rating">
+                                                    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                                                    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                                                    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                                                    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                                                    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                                    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                                                    <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                                    <input type="radio" id="star0" name="rating" value="0" /><label class="half" for="starhalf" title="Sucks big time - 0.0 stars"></label>
+                                                </fieldset>
+                                                <input class="btn btn-primary" type="submit" value="Post" name="submit">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </div>
+                        </form>
+                    }
+
                 </div>
             </div>
+        </div>
     </section>
 </div>

@@ -11,23 +11,27 @@ namespace TShirtShop.Data.Models
     
         public Product()
         {
-            Tags = new HashSet<ProductTags>();
-           
+            Tags = new HashSet<Tag>();
+            ColorsList = new HashSet<Color>();
+            SizeList = new HashSet<Size>();
+            Reviews = new HashSet<Review>();
         }
         [Key]
         public string Id { get; set; }
+        public string Name { get; set; }
         [Required]
         [Range(0.00,double.MaxValue)]
         public double Price { get; set; }
         [Required]
         public Sizes Size { get; set; }
          [Required]
-        public Colors Color { get; set; }
-
+        public ICollection<Color> ColorsList { get; set; }
+        public ICollection<Size>SizeList { get; set; }
+        public string Class { get; set; }
         public string PictureId { get; set; }
         public Image Picture { get; set; }
-        public ICollection<ProductTags> Tags{get;set;}
-
+        public ICollection<Tag> Tags{get;set;}
+        public ICollection<Review> Reviews { get; set; }
         //public string CategoryId { get; set; }
         //public Category Category{ get; set; }
         public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;

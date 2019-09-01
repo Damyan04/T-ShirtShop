@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TShirtShop.Data.Common.Models;
 
 namespace TShirtShop.Services.Data
 {
-  public  class ImageDto
+  public  class ImageDto:IAuditInfo
     {
         
         public string Id { get; set; }

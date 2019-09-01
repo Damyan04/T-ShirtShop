@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] Damyan T-Shirts</title>
-    
+    @using Microsoft.AspNetCore.Authorization
+    @inject IAuthorizationService AuthorizationService
     <meta name="description" content="">
     <meta name="author" content="">
     <environment include="Development">
@@ -14,7 +15,7 @@
         <link href="~/color/default.css" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="~/css/jquery.miniColors.css" />
-        
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -50,6 +51,11 @@
                     <nav class="pull-right nav-collapse collapse">
 					    
                         <ul id="menu-main" class="nav">
+                            @if (User.Identity.IsAuthenticated && (await AuthorizationService.AuthorizeAsync(User, "AdministratorOnly")).Succeeded)
+                            {
+                                <li><a asp-area="" asp-controller="Administrator" asp-action="UploadProducts">Admin Page</a></li>
+                            }
+                            
                             <li><a title="categories" asp-controller="ProductCategories" asp-action="TShirts">All T-Shirts</a></li>
 
                             <partial name="_LoginPartial" />
