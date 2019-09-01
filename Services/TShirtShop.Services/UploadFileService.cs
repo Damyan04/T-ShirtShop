@@ -18,6 +18,7 @@ namespace TShirtShop.Services
 {
     public class UploadFileService : IUploadFileService
     {
+        private const int lastItems = 3;
         private readonly ApplicationDbContext _appDbContext;
         public UploadFileService(ApplicationDbContext appDbContext)
         {
@@ -105,7 +106,7 @@ namespace TShirtShop.Services
             private void DeleteLastItem(ICollection<DesignImage> images)
             {
             
-                if (images.Count > 3)
+                if (images.Count > lastItems)
                 {
                     var lastImg = images.OrderByDescending(a => a.CreatedOn).LastOrDefault();
                     _appDbContext.DesignImages.Remove(lastImg);
