@@ -46,9 +46,9 @@ namespace TShirtShop.Services
 
         public void AddImageForUser(IList<IFormFile> files, string userId)
         {
-            var validuserId = _appDbContext.Users.Select(u => u.Id == userId).FirstOrDefault();
-            if (validuserId)
-            {
+           // var validuserId = _appDbContext.Users.Select(u => u.Id == userId).FirstOrDefault();
+           // if (validuserId)
+          //  {
 
 
                 IFormFile uploadedImage = files.FirstOrDefault();
@@ -80,7 +80,7 @@ namespace TShirtShop.Services
                 }
 
             }
-        }
+       // }
         public ICollection<string> GetAllSizes()
         {
             string[] names = Enum.GetNames(typeof(Sizes));

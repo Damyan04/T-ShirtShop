@@ -151,23 +151,40 @@ namespace TShirtShop.Services
                 
                 foreach (var colorName in colors)
                 {
-                    var color = (Colors)Enum.Parse(typeof(Colors), colorName);
-                    var colour = new Color()
+                    try
                     {
-                        Id = Guid.NewGuid().ToString(),
-                        Colors = color
-                    };
-                    product.ColorsList.Add(colour);
-                }
+                        var color = (Colors)Enum.Parse(typeof(Colors), colorName);
+                        var colour = new Color()
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Colors = color
+                        };
+                        product.ColorsList.Add(colour);
+                    }
+                    catch
+                    {
+
+                    }
+                    }
+                   
+                
                 foreach (var sizeName in sizes)
                 {
-                    var actualSize = (Sizes)Enum.Parse(typeof(Sizes), sizeName);
-                    var size = new Size()
+                    try
                     {
-                        Id = Guid.NewGuid().ToString(),
-                        SizeName = actualSize
-                    };
-                    product.SizeList.Add(size);
+                        var actualSize = (Sizes)Enum.Parse(typeof(Sizes), sizeName);
+                        var size = new Size()
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            SizeName = actualSize
+                        };
+                        product.SizeList.Add(size);
+                    }
+                    catch
+                    {
+
+                    }
+                    
                 }
                 //TODO:Check for existing tag name
                 foreach (var item in tags)
